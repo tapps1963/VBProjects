@@ -259,3 +259,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/003 DBConnect/003 DBConnect/QuestionBank 20180807_be.accdb
