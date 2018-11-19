@@ -81,12 +81,19 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmUserDetail.Designer.vb">
+      <DependentUpon>FrmUserDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LoginForm1.Designer.vb">
       <DependentUpon>LoginForm1.vb</DependentUpon>
     </Compile>
     <Compile Include="LoginForm1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MD5Maker.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -102,16 +109,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="QBDataSet1.Designer.vb">
+    <Compile Include="QuestionBank_20180807_beDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QBDataSet1.xsd</DependentUpon>
+      <DependentUpon>QuestionBank_20180807_beDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Security.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserDetail.resx">
+      <DependentUpon>FrmUserDetail.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm1.resx">
       <DependentUpon>LoginForm1.vb</DependentUpon>
@@ -134,16 +144,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="QBDataSet1.xsc">
-      <DependentUpon>QBDataSet1.xsd</DependentUpon>
+    <None Include="QuestionBank_20180807_beDataSet.xsc">
+      <DependentUpon>QuestionBank_20180807_beDataSet.xsd</DependentUpon>
     </None>
-    <None Include="QBDataSet1.xsd">
+    <None Include="QuestionBank_20180807_beDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QBDataSet1.Designer.vb</LastGenOutput>
+      <LastGenOutput>QuestionBank_20180807_beDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="QBDataSet1.xss">
-      <DependentUpon>QBDataSet1.xsd</DependentUpon>
+    <None Include="QuestionBank_20180807_beDataSet.xss">
+      <DependentUpon>QuestionBank_20180807_beDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

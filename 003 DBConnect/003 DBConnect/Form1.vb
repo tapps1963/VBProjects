@@ -3,7 +3,7 @@
 Public Class Form1
     Private Sub Form1_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'QBDataSet.tbl_users' table. You can move, or remove it, as needed.
-        Me.Tbl_usersTableAdapter.Fill(Me.QBDataSet.tbl_users)
+        'Me.Tbl_usersTableAdapter.Fill(Me.QBDataSet.tbl_users)
 
     End Sub
 
@@ -28,12 +28,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Tbl_usersBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles Tbl_usersBindingNavigatorSaveItem.Click
-        Me.Validate()
-        Me.Tbl_usersBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.QBDataSet)
-
+    Private Sub UserMaintenanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserMaintenanceToolStripMenuItem.Click
+        FrmUserDetail.Show()
     End Sub
-
-
 End Class

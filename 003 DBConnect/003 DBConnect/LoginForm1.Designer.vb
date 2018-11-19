@@ -1,10 +1,10 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-<Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")>
 Partial Class FormLogin
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -28,7 +28,7 @@ Partial Class FormLogin
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormLogin))
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
@@ -38,8 +38,6 @@ Partial Class FormLogin
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
-        Me.txtFirstName = New System.Windows.Forms.TextBox()
-        Me.cmdSec = New System.Windows.Forms.Button()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -102,22 +100,6 @@ Partial Class FormLogin
         Me.Cancel.TabIndex = 5
         Me.Cancel.Text = "&Cancel"
         '
-        'txtFirstName
-        '
-        Me.txtFirstName.Location = New System.Drawing.Point(244, 70)
-        Me.txtFirstName.Name = "txtFirstName"
-        Me.txtFirstName.Size = New System.Drawing.Size(100, 20)
-        Me.txtFirstName.TabIndex = 6
-        '
-        'cmdSec
-        '
-        Me.cmdSec.Location = New System.Drawing.Point(197, 127)
-        Me.cmdSec.Name = "cmdSec"
-        Me.cmdSec.Size = New System.Drawing.Size(94, 23)
-        Me.cmdSec.TabIndex = 7
-        Me.cmdSec.Text = "Secure"
-        Me.cmdSec.UseVisualStyleBackColor = True
-        '
         'FormLogin
         '
         Me.AcceptButton = Me.OK
@@ -125,8 +107,6 @@ Partial Class FormLogin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(401, 192)
-        Me.Controls.Add(Me.cmdSec)
-        Me.Controls.Add(Me.txtFirstName)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
         Me.Controls.Add(Me.txtPassword)
@@ -146,7 +126,4 @@ Partial Class FormLogin
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents txtFirstName As TextBox
-    Friend WithEvents cmdSec As Button
 End Class
