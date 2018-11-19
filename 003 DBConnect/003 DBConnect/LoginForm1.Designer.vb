@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 <Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")> _
-Partial Class frmLogin
+Partial Class FormLogin
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -30,7 +30,7 @@ Partial Class frmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormLogin))
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.UsernameLabel = New System.Windows.Forms.Label()
         Me.PasswordLabel = New System.Windows.Forms.Label()
@@ -39,6 +39,7 @@ Partial Class frmLogin
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
         Me.txtFirstName = New System.Windows.Forms.TextBox()
+        Me.cmdSec = New System.Windows.Forms.Button()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -108,13 +109,23 @@ Partial Class frmLogin
         Me.txtFirstName.Size = New System.Drawing.Size(100, 20)
         Me.txtFirstName.TabIndex = 6
         '
-        'frmLogin
+        'cmdSec
+        '
+        Me.cmdSec.Location = New System.Drawing.Point(197, 127)
+        Me.cmdSec.Name = "cmdSec"
+        Me.cmdSec.Size = New System.Drawing.Size(94, 23)
+        Me.cmdSec.TabIndex = 7
+        Me.cmdSec.Text = "Secure"
+        Me.cmdSec.UseVisualStyleBackColor = True
+        '
+        'FormLogin
         '
         Me.AcceptButton = Me.OK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(401, 192)
+        Me.Controls.Add(Me.cmdSec)
         Me.Controls.Add(Me.txtFirstName)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
@@ -126,7 +137,7 @@ Partial Class frmLogin
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmLogin"
+        Me.Name = "FormLogin"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Question Bank Login"
@@ -137,4 +148,5 @@ Partial Class frmLogin
     End Sub
 
     Friend WithEvents txtFirstName As TextBox
+    Friend WithEvents cmdSec As Button
 End Class

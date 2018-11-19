@@ -34,4 +34,6 @@ Public Class Form1
         Me.TableAdapterManager.UpdateAll(Me.QBDataSet)
 
     End Sub
-End class
+
+
+End Class
