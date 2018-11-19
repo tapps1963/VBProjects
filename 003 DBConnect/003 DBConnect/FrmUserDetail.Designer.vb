@@ -83,6 +83,7 @@ Partial Class FrmUserDetail
         Me.CreatedbyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ChangedonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ChangedbyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.grbClientDetail.SuspendLayout()
         Me.grbLoginDetail.SuspendLayout()
         Me.grbUserDetail.SuspendLayout()
@@ -219,6 +220,7 @@ Partial Class FrmUserDetail
         '
         'grbUserDetail
         '
+        Me.grbUserDetail.Controls.Add(Me.Button1)
         Me.grbUserDetail.Controls.Add(Me.lblMobile)
         Me.grbUserDetail.Controls.Add(Me.lblEmail)
         Me.grbUserDetail.Controls.Add(Me.lblIdNo)
@@ -578,6 +580,15 @@ Partial Class FrmUserDetail
         Me.ChangedbyDataGridViewTextBoxColumn.Name = "ChangedbyDataGridViewTextBoxColumn"
         Me.ChangedbyDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(354, 45)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 34
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FrmUserDetail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -671,4 +682,5 @@ Partial Class FrmUserDetail
     Friend WithEvents CreatedbyDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ChangedonDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ChangedbyDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As Button
 End Class

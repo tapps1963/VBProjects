@@ -5,7 +5,6 @@ Public Class FormLogin
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         Dim ds As New DataSet
         Dim mySql As String
-        Const recNFound As String = "Record not Found"
 
         Dim myPass As New MD5Maker
 
@@ -44,4 +43,5 @@ Public Class FormLogin
         Form1.Show()
 
     End Sub
+
 End Class
