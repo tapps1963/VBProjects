@@ -1,1 +1,4 @@
-This is normal text
+This is so 'normal' text
+and so is the second line
+
+Be aware of the changes
