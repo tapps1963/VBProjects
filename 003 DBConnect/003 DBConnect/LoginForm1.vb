@@ -3,28 +3,18 @@ Imports System.Data.OleDb
 Public Class FormLogin
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
-        Dim ds As New DataSet
-        Dim mySql As String
+        Dim myPW As New DBControl
+        Dim mypass As Boolean
 
-        Dim myPass As New MD5Maker
+        mypass = myPW.GetPW(txtUserName.Text, txtPassword.Text)
 
-        mySql = "select * from tbl_users where user_login = '" & txtUserName.Text & "'"
+        If mypass = True Then
+            Form1.Show()
+        Else
+            Close()
+        End If
 
-        Dim con As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Shayne.Tappan\Dropbox\Shayne Tappan\MyDevelopments\Access DB\Question Bank\QuestionBank 20180807_be.accdb")
-        con.Open()
-        Dim cmd As OleDbCommand = New OleDbCommand(mySql, con)
 
-        Using dr As OleDbDataReader = cmd.ExecuteReader
-            If dr.HasRows Then
-                dr.Read()
-
-                'txtFirstName.Text = If(myPass.MD5(txtPassword.Text) = dr("password"), "Correct", "Wrong")
-            Else
-                'txtFirstName.Text = recNFound
-            End If
-
-        End Using
-        con.Close()
     End Sub
 
 
@@ -36,7 +26,7 @@ Public Class FormLogin
 
     Private Sub cmdSec_Click(sender As Object, e As EventArgs)
 
-        Dim passme As Security = New Security()
+        'Dim passme As Security = New Security()
 
         'txtFirstName.Text = passme.passMe
 
