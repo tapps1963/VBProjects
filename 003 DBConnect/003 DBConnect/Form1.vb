@@ -1,6 +1,8 @@
 ﻿Imports System.Data.OleDb
 
 Public Class Form1
+
+
     Private Sub Form1_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'QBDataSet.tbl_users' table. You can move, or remove it, as needed.
         'Me.Tbl_usersTableAdapter.Fill(Me.QBDataSet.tbl_users)
@@ -30,5 +32,11 @@ Public Class Form1
 
     Private Sub UserMaintenanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserMaintenanceToolStripMenuItem.Click
         FrmUserDetail.Show()
+    End Sub
+
+    Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        Dim frmUser As New FrmUserDetail
+        frmUser.MdiParent = Me
+        frmUser.Show()
     End Sub
 End Class

@@ -21,7 +21,7 @@ Public Class DBControl
                 dr.Read()
                 myPW = myPass.MD5(pwIn)
 
-                If pwIn = myPW Then
+                If dr("password") = myPW Then
                     Return True
                 Else
                     Return False

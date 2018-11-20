@@ -61,13 +61,14 @@ Partial Class Form1
         'UserMaintenanceToolStripMenuItem
         '
         Me.UserMaintenanceToolStripMenuItem.Name = "UserMaintenanceToolStripMenuItem"
-        Me.UserMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UserMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
         Me.UserMaintenanceToolStripMenuItem.Text = "User Maintenance"
         '
         'Form1
         '
         Me.ClientSize = New System.Drawing.Size(629, 388)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
         Me.Text = "MyForm"

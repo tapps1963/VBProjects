@@ -9,9 +9,11 @@ Public Class FormLogin
         mypass = myPW.GetPW(txtUserName.Text, txtPassword.Text)
 
         If mypass = True Then
-            Form1.Show()
+            Me.Hide()
+            Form1.ShowDialog()
         Else
             Close()
+            MsgBox("Username & Password combination invalid.", MsgBoxStyle.Critical, "Authorisation Error")
         End If
 
 

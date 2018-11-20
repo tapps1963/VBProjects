@@ -22,7 +22,6 @@ Partial Class FrmUserDetail
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.grbClientDetail = New System.Windows.Forms.GroupBox()
         Me.lblUnitInOrg = New System.Windows.Forms.Label()
         Me.lblOrganisation = New System.Windows.Forms.Label()
@@ -59,37 +58,12 @@ Partial Class FrmUserDetail
         Me.btnDeleteUser = New System.Windows.Forms.Button()
         Me.btnSaveUser = New System.Windows.Forms.Button()
         Me.dtgUsers = New System.Windows.Forms.DataGridView()
-        Me.QuestionBank_20180807_beDataSet = New _003_DBConnect.QuestionBank_20180807_beDataSet()
-        Me.TblusersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Tbl_usersTableAdapter = New _003_DBConnect.QuestionBank_20180807_beDataSetTableAdapters.tbl_usersTableAdapter()
-        Me.UseridDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClientunitDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UserloginDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PasswordDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FirstnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MiddlenameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LastnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdnoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailaddrDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MobilenoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OfficenoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SecIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.APSERVDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SapclientDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SaplanguageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SILENTDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.EditquestionDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.CreatedonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CreatedbyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ChangedonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ChangedbyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.QuestionBank_20180807_beDataSet1 = New _003_DBConnect.QuestionBank_20180807_beDataSet()
         Me.grbClientDetail.SuspendLayout()
         Me.grbLoginDetail.SuspendLayout()
         Me.grbUserDetail.SuspendLayout()
         CType(Me.dtgUsers, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.QuestionBank_20180807_beDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TblusersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.QuestionBank_20180807_beDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grbClientDetail
@@ -220,7 +194,6 @@ Partial Class FrmUserDetail
         '
         'grbUserDetail
         '
-        Me.grbUserDetail.Controls.Add(Me.Button1)
         Me.grbUserDetail.Controls.Add(Me.lblMobile)
         Me.grbUserDetail.Controls.Add(Me.lblEmail)
         Me.grbUserDetail.Controls.Add(Me.lblIdNo)
@@ -235,7 +208,7 @@ Partial Class FrmUserDetail
         Me.grbUserDetail.Controls.Add(Me.txtMiddleName)
         Me.grbUserDetail.Location = New System.Drawing.Point(12, 302)
         Me.grbUserDetail.Name = "grbUserDetail"
-        Me.grbUserDetail.Size = New System.Drawing.Size(480, 188)
+        Me.grbUserDetail.Size = New System.Drawing.Size(484, 189)
         Me.grbUserDetail.TabIndex = 26
         Me.grbUserDetail.TabStop = False
         Me.grbUserDetail.Text = "User Detail"
@@ -407,187 +380,16 @@ Partial Class FrmUserDetail
         '
         'dtgUsers
         '
-        Me.dtgUsers.AllowUserToAddRows = False
-        Me.dtgUsers.AllowUserToDeleteRows = False
-        Me.dtgUsers.AutoGenerateColumns = False
         Me.dtgUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgUsers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UseridDataGridViewTextBoxColumn, Me.ClientunitDataGridViewTextBoxColumn, Me.UserloginDataGridViewTextBoxColumn, Me.PasswordDataGridViewTextBoxColumn, Me.FirstnameDataGridViewTextBoxColumn, Me.MiddlenameDataGridViewTextBoxColumn, Me.LastnameDataGridViewTextBoxColumn, Me.IdnoDataGridViewTextBoxColumn, Me.EmailaddrDataGridViewTextBoxColumn, Me.MobilenoDataGridViewTextBoxColumn, Me.OfficenoDataGridViewTextBoxColumn, Me.SecIdDataGridViewTextBoxColumn, Me.APSERVDataGridViewTextBoxColumn, Me.SapclientDataGridViewTextBoxColumn, Me.SaplanguageDataGridViewTextBoxColumn, Me.SILENTDataGridViewCheckBoxColumn, Me.EditquestionDataGridViewCheckBoxColumn, Me.CreatedonDataGridViewTextBoxColumn, Me.CreatedbyDataGridViewTextBoxColumn, Me.ChangedonDataGridViewTextBoxColumn, Me.ChangedbyDataGridViewTextBoxColumn})
-        Me.dtgUsers.DataSource = Me.TblusersBindingSource
-        Me.dtgUsers.Location = New System.Drawing.Point(11, 46)
+        Me.dtgUsers.Location = New System.Drawing.Point(11, 40)
         Me.dtgUsers.Name = "dtgUsers"
-        Me.dtgUsers.ReadOnly = True
-        Me.dtgUsers.Size = New System.Drawing.Size(480, 94)
+        Me.dtgUsers.Size = New System.Drawing.Size(480, 105)
         Me.dtgUsers.TabIndex = 35
         '
-        'QuestionBank_20180807_beDataSet
+        'QuestionBank_20180807_beDataSet1
         '
-        Me.QuestionBank_20180807_beDataSet.DataSetName = "QuestionBank_20180807_beDataSet"
-        Me.QuestionBank_20180807_beDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TblusersBindingSource
-        '
-        Me.TblusersBindingSource.DataMember = "tbl_users"
-        Me.TblusersBindingSource.DataSource = Me.QuestionBank_20180807_beDataSet
-        '
-        'Tbl_usersTableAdapter
-        '
-        Me.Tbl_usersTableAdapter.ClearBeforeFill = True
-        '
-        'UseridDataGridViewTextBoxColumn
-        '
-        Me.UseridDataGridViewTextBoxColumn.DataPropertyName = "user_id"
-        Me.UseridDataGridViewTextBoxColumn.HeaderText = "user_id"
-        Me.UseridDataGridViewTextBoxColumn.Name = "UseridDataGridViewTextBoxColumn"
-        Me.UseridDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ClientunitDataGridViewTextBoxColumn
-        '
-        Me.ClientunitDataGridViewTextBoxColumn.DataPropertyName = "client_unit"
-        Me.ClientunitDataGridViewTextBoxColumn.HeaderText = "client_unit"
-        Me.ClientunitDataGridViewTextBoxColumn.Name = "ClientunitDataGridViewTextBoxColumn"
-        Me.ClientunitDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'UserloginDataGridViewTextBoxColumn
-        '
-        Me.UserloginDataGridViewTextBoxColumn.DataPropertyName = "user_login"
-        Me.UserloginDataGridViewTextBoxColumn.HeaderText = "user_login"
-        Me.UserloginDataGridViewTextBoxColumn.Name = "UserloginDataGridViewTextBoxColumn"
-        Me.UserloginDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PasswordDataGridViewTextBoxColumn
-        '
-        Me.PasswordDataGridViewTextBoxColumn.DataPropertyName = "password"
-        Me.PasswordDataGridViewTextBoxColumn.HeaderText = "password"
-        Me.PasswordDataGridViewTextBoxColumn.Name = "PasswordDataGridViewTextBoxColumn"
-        Me.PasswordDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FirstnameDataGridViewTextBoxColumn
-        '
-        Me.FirstnameDataGridViewTextBoxColumn.DataPropertyName = "first_name"
-        Me.FirstnameDataGridViewTextBoxColumn.HeaderText = "first_name"
-        Me.FirstnameDataGridViewTextBoxColumn.Name = "FirstnameDataGridViewTextBoxColumn"
-        Me.FirstnameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'MiddlenameDataGridViewTextBoxColumn
-        '
-        Me.MiddlenameDataGridViewTextBoxColumn.DataPropertyName = "middle_name"
-        Me.MiddlenameDataGridViewTextBoxColumn.HeaderText = "middle_name"
-        Me.MiddlenameDataGridViewTextBoxColumn.Name = "MiddlenameDataGridViewTextBoxColumn"
-        Me.MiddlenameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LastnameDataGridViewTextBoxColumn
-        '
-        Me.LastnameDataGridViewTextBoxColumn.DataPropertyName = "last_name"
-        Me.LastnameDataGridViewTextBoxColumn.HeaderText = "last_name"
-        Me.LastnameDataGridViewTextBoxColumn.Name = "LastnameDataGridViewTextBoxColumn"
-        Me.LastnameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'IdnoDataGridViewTextBoxColumn
-        '
-        Me.IdnoDataGridViewTextBoxColumn.DataPropertyName = "id_no"
-        Me.IdnoDataGridViewTextBoxColumn.HeaderText = "id_no"
-        Me.IdnoDataGridViewTextBoxColumn.Name = "IdnoDataGridViewTextBoxColumn"
-        Me.IdnoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmailaddrDataGridViewTextBoxColumn
-        '
-        Me.EmailaddrDataGridViewTextBoxColumn.DataPropertyName = "email_addr"
-        Me.EmailaddrDataGridViewTextBoxColumn.HeaderText = "email_addr"
-        Me.EmailaddrDataGridViewTextBoxColumn.Name = "EmailaddrDataGridViewTextBoxColumn"
-        Me.EmailaddrDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'MobilenoDataGridViewTextBoxColumn
-        '
-        Me.MobilenoDataGridViewTextBoxColumn.DataPropertyName = "mobile_no"
-        Me.MobilenoDataGridViewTextBoxColumn.HeaderText = "mobile_no"
-        Me.MobilenoDataGridViewTextBoxColumn.Name = "MobilenoDataGridViewTextBoxColumn"
-        Me.MobilenoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'OfficenoDataGridViewTextBoxColumn
-        '
-        Me.OfficenoDataGridViewTextBoxColumn.DataPropertyName = "office_no"
-        Me.OfficenoDataGridViewTextBoxColumn.HeaderText = "office_no"
-        Me.OfficenoDataGridViewTextBoxColumn.Name = "OfficenoDataGridViewTextBoxColumn"
-        Me.OfficenoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SecIdDataGridViewTextBoxColumn
-        '
-        Me.SecIdDataGridViewTextBoxColumn.DataPropertyName = "secId"
-        Me.SecIdDataGridViewTextBoxColumn.HeaderText = "secId"
-        Me.SecIdDataGridViewTextBoxColumn.Name = "SecIdDataGridViewTextBoxColumn"
-        Me.SecIdDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'APSERVDataGridViewTextBoxColumn
-        '
-        Me.APSERVDataGridViewTextBoxColumn.DataPropertyName = "APSERV"
-        Me.APSERVDataGridViewTextBoxColumn.HeaderText = "APSERV"
-        Me.APSERVDataGridViewTextBoxColumn.Name = "APSERVDataGridViewTextBoxColumn"
-        Me.APSERVDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SapclientDataGridViewTextBoxColumn
-        '
-        Me.SapclientDataGridViewTextBoxColumn.DataPropertyName = "sap_client"
-        Me.SapclientDataGridViewTextBoxColumn.HeaderText = "sap_client"
-        Me.SapclientDataGridViewTextBoxColumn.Name = "SapclientDataGridViewTextBoxColumn"
-        Me.SapclientDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SaplanguageDataGridViewTextBoxColumn
-        '
-        Me.SaplanguageDataGridViewTextBoxColumn.DataPropertyName = "sap_language"
-        Me.SaplanguageDataGridViewTextBoxColumn.HeaderText = "sap_language"
-        Me.SaplanguageDataGridViewTextBoxColumn.Name = "SaplanguageDataGridViewTextBoxColumn"
-        Me.SaplanguageDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SILENTDataGridViewCheckBoxColumn
-        '
-        Me.SILENTDataGridViewCheckBoxColumn.DataPropertyName = "SILENT"
-        Me.SILENTDataGridViewCheckBoxColumn.HeaderText = "SILENT"
-        Me.SILENTDataGridViewCheckBoxColumn.Name = "SILENTDataGridViewCheckBoxColumn"
-        Me.SILENTDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'EditquestionDataGridViewCheckBoxColumn
-        '
-        Me.EditquestionDataGridViewCheckBoxColumn.DataPropertyName = "edit_question"
-        Me.EditquestionDataGridViewCheckBoxColumn.HeaderText = "edit_question"
-        Me.EditquestionDataGridViewCheckBoxColumn.Name = "EditquestionDataGridViewCheckBoxColumn"
-        Me.EditquestionDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'CreatedonDataGridViewTextBoxColumn
-        '
-        Me.CreatedonDataGridViewTextBoxColumn.DataPropertyName = "created_on"
-        Me.CreatedonDataGridViewTextBoxColumn.HeaderText = "created_on"
-        Me.CreatedonDataGridViewTextBoxColumn.Name = "CreatedonDataGridViewTextBoxColumn"
-        Me.CreatedonDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CreatedbyDataGridViewTextBoxColumn
-        '
-        Me.CreatedbyDataGridViewTextBoxColumn.DataPropertyName = "created_by"
-        Me.CreatedbyDataGridViewTextBoxColumn.HeaderText = "created_by"
-        Me.CreatedbyDataGridViewTextBoxColumn.Name = "CreatedbyDataGridViewTextBoxColumn"
-        Me.CreatedbyDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ChangedonDataGridViewTextBoxColumn
-        '
-        Me.ChangedonDataGridViewTextBoxColumn.DataPropertyName = "changed_on"
-        Me.ChangedonDataGridViewTextBoxColumn.HeaderText = "changed_on"
-        Me.ChangedonDataGridViewTextBoxColumn.Name = "ChangedonDataGridViewTextBoxColumn"
-        Me.ChangedonDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ChangedbyDataGridViewTextBoxColumn
-        '
-        Me.ChangedbyDataGridViewTextBoxColumn.DataPropertyName = "changed_by"
-        Me.ChangedbyDataGridViewTextBoxColumn.HeaderText = "changed_by"
-        Me.ChangedbyDataGridViewTextBoxColumn.Name = "ChangedbyDataGridViewTextBoxColumn"
-        Me.ChangedbyDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(354, 45)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 34
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.QuestionBank_20180807_beDataSet1.DataSetName = "QuestionBank_20180807_beDataSet"
+        Me.QuestionBank_20180807_beDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'FrmUserDetail
         '
@@ -615,8 +417,7 @@ Partial Class FrmUserDetail
         Me.grbUserDetail.ResumeLayout(False)
         Me.grbUserDetail.PerformLayout()
         CType(Me.dtgUsers, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.QuestionBank_20180807_beDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TblusersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.QuestionBank_20180807_beDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -657,9 +458,8 @@ Partial Class FrmUserDetail
     Friend WithEvents btnNewUser As Button
     Friend WithEvents btnDeleteUser As Button
     Friend WithEvents btnSaveUser As Button
-    Friend WithEvents dtgUsers As DataGridView
     Friend WithEvents QuestionBank_20180807_beDataSet As QuestionBank_20180807_beDataSet
-    Friend WithEvents TblusersBindingSource As BindingSource
+    Friend WithEvents QryTestTableAdapter As QuestionBank_20180807_beDataSetTableAdapters.qryTestTableAdapter
     Friend WithEvents Tbl_usersTableAdapter As QuestionBank_20180807_beDataSetTableAdapters.tbl_usersTableAdapter
     Friend WithEvents UseridDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ClientunitDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -682,5 +482,6 @@ Partial Class FrmUserDetail
     Friend WithEvents CreatedbyDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ChangedonDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ChangedbyDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Button1 As Button
+    Friend WithEvents dtgUsers As DataGridView
+    Friend WithEvents QuestionBank_20180807_beDataSet1 As QuestionBank_20180807_beDataSet
 End Class

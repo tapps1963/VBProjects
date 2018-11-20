@@ -1,14 +1,13 @@
 ﻿
 Public Class FrmUserDetail
     Private Sub FrmUserDetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'QuestionBank_20180807_beDataSet.tbl_users' table. You can move, or remove it, as needed.
-        Me.Tbl_usersTableAdapter.Fill(Me.QuestionBank_20180807_beDataSet.tbl_users)
-
+        'TODO: This line of code loads data into the 'QuestionBank_20180807_beDataSet1.qryTest' table. You can move, or remove it, as needed.
+        Me.QryTestTableAdapter1.Fill(Me.QuestionBank_20180807_beDataSet1.qryTest)
 
     End Sub
 
 
-    Private Sub dtgUsers_CellClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles dtgUsers.CellClick
+    Private Sub dtgUsers_CellClick_1(sender As Object, e As DataGridViewCellEventArgs)
         Dim index As Integer
         index = e.RowIndex
 
@@ -35,13 +34,4 @@ Public Class FrmUserDetail
 
     End Sub
 
-
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim myPW As New DBControl
-        Dim mypass As Boolean
-
-        mypass = myPW.GetPW("SCT", "general")
-
-    End Sub
 End Class
