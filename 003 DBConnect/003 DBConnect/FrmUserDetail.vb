@@ -1,8 +1,7 @@
 ﻿
 Public Class FrmUserDetail
     Private Sub FrmUserDetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'QuestionBank_20180807_beDataSet1.qryTest' table. You can move, or remove it, as needed.
-        Me.QryTestTableAdapter1.Fill(Me.QuestionBank_20180807_beDataSet1.qryTest)
+
 
     End Sub
 
