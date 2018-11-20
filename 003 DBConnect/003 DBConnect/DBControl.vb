@@ -1,48 +1,60 @@
 ﻿Imports System.Data.OleDb
 
 Public Class DBControl
-    Private _pwIN As String
+    ' Create a DB Connection
+    Private DBCon As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=QBankDB.accdb")
 
-    Function GetPW(userLogin As String, pwIn As String)
-        Dim ds As New DataSet
-        Dim mySql As String
+    ' Create DB Command
+    Private DBCmd As OleDbCommand
 
-        Dim myPass As New MD5Maker
-        Dim myPW As String
+    ' DB Data
+    Public DBDA As OleDbDataAdapter
+    Public DBDT As DataTable
 
-        mySql = "select * from tbl_users where user_login = '" & userLogin & "'"
+    ' Query Parameters
+    Public Params As New List(Of OleDbParameter)
 
-        Dim con As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Shayne.Tappan\Dropbox\Shayne Tappan\MyDevelopments\Access DB\Question Bank\QuestionBank 20180807_be.accdb")
-        con.Open()
-        Dim cmd As OleDbCommand = New OleDbCommand(mySql, con)
+    ' Query Statistics
+    Public RecordCount As Integer
+    Public Exception As String
 
-        Using dr As OleDbDataReader = cmd.ExecuteReader
-            If dr.HasRows Then
-                dr.Read()
-                myPW = myPass.MD5(pwIn)
+    Public Sub ExecQuery(Query As String)
+        ' Reset Query Statistics
+        RecordCount = 0
+        Exception = ""
 
-                If dr("password") = myPW Then
-                    Return True
-                Else
-                    Return False
-                End If
-                'txtFirstName.Text = If(= = dr("password"), "Correct", "Wrong")
-            Else
-                'txtFirstName.Text = recNFound
-            End If
+        Try
+            ' Open a Connection
+            DBCon.Open()
 
-        End Using
-        con.Close()
+            ' Create Database Command
+            DBCmd = New OleDbCommand(Query, DBCon)
 
-    End Function
+            ' Load Params into DBCom
+            Params.ForEach(Sub(p) DBCmd.Parameters.Add(p))
 
-    Private Property typePW As String
-        Get
+            ' Clear Params list
+            Params.Clear()
 
-        End Get
-        Set(value As String)
-            _pwIN = value
-        End Set
-    End Property
+            ' Execute Command and fill dataset (DataTable)
+            DBDT = New DataTable
+            DBDA = New OleDbDataAdapter(DBCmd)
+
+            RecordCount = DBDA.Fill(DBDT)
+
+        Catch ex As Exception
+            Exception = ex.Message
+        End Try
+
+        ' Close the connection
+        If DBCon.State = ConnectionState.Open Then DBCon.Close()
+
+    End Sub
+
+    ' Include Query and command parameters
+    Public Sub AddParam(Name As String, Value As Object)
+        Dim newParam As New OleDbParameter(Name, Value)
+        Params.Add(newParam)
+    End Sub
 
 End Class
