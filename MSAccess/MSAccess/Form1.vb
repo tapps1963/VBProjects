@@ -5,6 +5,11 @@
     End Function
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+        RefreshGrid()
+    End Sub
+
+    Public Sub RefreshGrid()
         ' Run Query
         Access.ExecQuery("select * from tbl_users order by first_name")
 
@@ -16,6 +21,9 @@
         ' Fill DataGrid
         dgvData.DataSource = Access.DBDT
 
+        ' Clear ComboBox
+        cbxUsers.Items.Clear()
+
         ' Fill ComboBox
         For Each R As DataRow In Access.DBDT.Rows
             cbxUsers.Items.Add(R("user_login"))
@@ -26,6 +34,7 @@
             cbxUsers.SelectedIndex = 0
 
         End If
+
     End Sub
 
     Private Sub SearchMember(Name As String)
@@ -49,5 +58,9 @@
 
     Private Sub txtFind_TextChanged(sender As Object, e As EventArgs) Handles txtFind.TextChanged
         SearchMember(txtFind.Text)
+    End Sub
+
+    Private Sub NewUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewUserToolStripMenuItem.Click
+        NewUser.Show()
     End Sub
 End Class
