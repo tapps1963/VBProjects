@@ -82,10 +82,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUserDetail.Designer.vb">
-      <DependentUpon>FrmUserDetail.vb</DependentUpon>
+    <Compile Include="FrmUserMaintenance.Designer.vb">
+      <DependentUpon>FrmUserMaintenance.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmUserDetail.vb">
+    <Compile Include="FrmUserMaintenance.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm1.Designer.vb">
@@ -115,8 +115,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUserDetail.resx">
-      <DependentUpon>FrmUserDetail.vb</DependentUpon>
+    <EmbeddedResource Include="FrmUserMaintenance.resx">
+      <DependentUpon>FrmUserMaintenance.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm1.resx">
       <DependentUpon>LoginForm1.vb</DependentUpon>
