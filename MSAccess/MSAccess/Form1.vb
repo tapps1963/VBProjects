@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class FrmUserMaintenance
     Private Access As New DBControl
     Private Function NotEmpty(text As String) As Boolean
         Return Not String.IsNullOrEmpty(text)

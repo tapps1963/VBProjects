@@ -32,7 +32,7 @@
         MsgBox("User was added succesfully...")
 
         ' Refresh Data  Grid
-        Form1.RefreshGrid()
+        FrmUserMaintenance.RefreshGrid()
 
         ' Close Form
         Me.Close()
