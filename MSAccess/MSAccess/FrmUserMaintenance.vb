@@ -151,31 +151,57 @@
         End If
 
         ' Add Parameters - Order Matters !!!
-        Access.AddParam("@userid", txtUserId.Text)
         Access.AddParam("@userlogin", txtUserLogin.Text)
         Access.AddParam("@password", txtPassword.Text)
         Access.AddParam("@firstname", txtFirstName.Text)
         Access.AddParam("@middlename", txtMiddleName.Text)
         Access.AddParam("@lastname", txtLastName.Text)
+        Access.AddParam("@idno", txtIdNumber.Text)
         Access.AddParam("@email", txtEmail.Text)
         Access.AddParam("@mobile", txtMobile.Text)
         Access.AddParam("@active", cbxActive.Enabled)
+        Access.AddParam("@userid", txtUserId.Text)
+
+        ' Open DB
 
         ' Run the Command
         mySql = "update tbl_users " &
-                "set user_login-@userlogin," &
-                "[password]-@password," &
-                "first_name-@firstname," &
-                "middle_name-@middlename," &
-                "last_name-@lastname," &
-                "email_addr-@email " &
-                "where user_id_@userid"
+            "set user_login=@userlogin," &
+            "[password]=@password," &
+            "first_name=@firstname," &
+            "middle_name=@middlename," &
+            "last_name=@lastname," &
+            "id_no=@idno," &
+            "email_addr=@email, " &
+            "mobile_no=@mobile," &
+            "active=@active " &
+            "where user_id=@userid"
+
+        'mySql = "update tbl_users " &
+        '    "set first_name=@firstname " &
+        '    "where user_id=@userid"
+
         Access.ExecQuery(mySql)
 
         ' Report and Abort
-        If noerrors = True Then
-
-
+        If NoErrors(True) Then
+            Exit Sub
         End If
+
+        ' Refresh User data Grd
+        RefreshGrid()
+
     End Sub
+
+    Private Function NoErrors(Optional Report As Boolean = False) As Boolean
+        If Not String.IsNullOrEmpty(Access.Exception) Then
+            If Report = True Then
+                MsgBox(Access.Exception)
+                Return False
+            Else
+                Return True
+            End If
+        End If
+    End Function
+
 End Class
