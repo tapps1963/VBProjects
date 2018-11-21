@@ -1,37 +1,41 @@
 ﻿Public Class FrmUserMaintenance
+    Private mySql As String
+
     Private Access As New DBControl
     Private Function NotEmpty(text As String) As Boolean
         Return Not String.IsNullOrEmpty(text)
     End Function
 
-    Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+    Private Sub FrmUserMaintenance_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        grbClient.Visible = False
+        grbLogin.Visible = False
+        grbUserDetail.Visible = False
+
         RefreshGrid()
     End Sub
 
     Public Sub RefreshGrid()
-
-        Dim mySql As String
-
+        '& "tbl_users.password, " _
         'mySql = "select * from tbl_users order by first_name"
 
         mySql = "SELECT tbl_users.user_id, " _
-            & "tbl_users.client_unit, " _
-            & "tbl_users.user_login, " _
-            & "tbl_users.password, " _
-            & "tbl_users.first_name, " _
-            & "tbl_users.middle_name, " _
-            & "tbl_users.last_name, " _
-            & "tbl_users.id_no, " _
-            & "tbl_users.email_addr, " _
-            & "tbl_users.mobile_no, " _
-            & "tbl_client_unit.unit_text, " _
-            & "tbl_client_org.org_text, " _
-            & "tbl_client.client_text " _
-            & "FROM(tbl_client " _
-            & "INNER JOIN (tbl_client_org " _
-            & "INNER JOIN tbl_client_unit On tbl_client_org.org_id = tbl_client_unit.org_id) " _
-            & "On tbl_client.client_id = tbl_client_org.client_id) " _
-            & "INNER JOIN tbl_users On tbl_client_unit.unit_id = tbl_users.client_unit; " _
+        & "tbl_users.client_unit, " _
+        & "tbl_users.user_login, " _
+        & "tbl_users.first_name, " _
+        & "tbl_users.middle_name, " _
+        & "tbl_users.last_name, " _
+        & "tbl_users.id_no, " _
+        & "tbl_users.email_addr, " _
+        & "tbl_users.mobile_no, " _
+        & "tbl_users.active, " _
+        & "tbl_client_unit.unit_text, " _
+        & "tbl_client_org.org_text, " _
+        & "tbl_client.client_text " _
+        & "FROM(tbl_client " _
+        & "INNER JOIN (tbl_client_org " _
+        & "INNER JOIN tbl_client_unit On tbl_client_org.org_id = tbl_client_unit.org_id) " _
+        & "On tbl_client.client_id = tbl_client_org.client_id) " _
+        & "INNER JOIN tbl_users On tbl_client_unit.unit_id = tbl_users.client_unit; " _
         '& "WHERE(((tbl_users.user_id) = 1));"
 
         ' Run Query
@@ -45,25 +49,48 @@
         ' Fill DataGrid
         dgvData.DataSource = Access.DBDT
 
-        ' Clear ComboBox
-        cbxUsers.Items.Clear()
+        '' Clear ComboBox
+        'cbxUsers.Items.Clear()
 
-        ' Fill ComboBox
-        For Each R As DataRow In Access.DBDT.Rows
-            cbxUsers.Items.Add(R("user_login"))
-        Next
+        '' Fill ComboBox
+        'For Each R As DataRow In Access.DBDT.Rows
+        '    cbxUsers.Items.Add(R("user_login"))
+        'Next
 
         ' Display first name found
-        If Access.RecordCount > 0 Then
-            cbxUsers.SelectedIndex = 0
+        'If Access.RecordCount > 0 Then
+        '    cbxUsers.SelectedIndex = 0
 
-        End If
+        'End If
     End Sub
 
     Private Sub SearchMember(Name As String)
+        '& "tbl_users.password, " _
+        'mySql = "select * from tbl_users where user_login like @user_login"
+
+        mySql = "SELECT tbl_users.user_id, " _
+        & "tbl_users.client_unit, " _
+        & "tbl_users.user_login, " _
+        & "tbl_users.first_name, " _
+        & "tbl_users.middle_name, " _
+        & "tbl_users.last_name, " _
+        & "tbl_users.id_no, " _
+        & "tbl_users.email_addr, " _
+        & "tbl_users.mobile_no, " _
+        & "tbl_users.active, " _
+        & "tbl_client_unit.unit_text, " _
+        & "tbl_client_org.org_text, " _
+        & "tbl_client.client_text " _
+        & "FROM(tbl_client " _
+        & "INNER JOIN (tbl_client_org " _
+        & "INNER JOIN tbl_client_unit On tbl_client_org.org_id = tbl_client_unit.org_id) " _
+        & "On tbl_client.client_id = tbl_client_org.client_id) " _
+        & "INNER JOIN tbl_users On tbl_client_unit.unit_id = tbl_users.client_unit " _
+        & "WHERE first_name like @first_name;"
+
         ' Add Parameters
-        Access.AddParam("@user_login", "%" & Name & "%")
-        Access.ExecQuery("select * from tbl_users where user_login like @user_login")
+        Access.AddParam("@first_name", "%" & Name & "%")
+        Access.ExecQuery(mySql)
 
         ' Report and Abort
         If NotEmpty(Access.Exception) Then MsgBox(Access.Exception) : Exit Sub
@@ -80,12 +107,12 @@
         SearchMember(txtFind.Text)
     End Sub
 
-    Private Sub NewUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewUserToolStripMenuItem.Click
-        NewUser.Show()
-    End Sub
-
-
     Private Sub dgvData_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvData.CellClick
+
+        grbClient.Visible = True
+        grbLogin.Visible = True
+        grbUserDetail.Visible = True
+
         Dim index As Integer
         index = e.RowIndex
         Dim selectedRow As DataGridViewRow
@@ -93,13 +120,14 @@
 
         txtUserId.Text = selectedRow.Cells(0).Value.ToString
         txtUserLogin.Text = selectedRow.Cells(2).Value.ToString
-        txtPassword.Text = selectedRow.Cells(3).Value.ToString
-        txtFirstName.Text = selectedRow.Cells(4).Value.ToString
-        txtMiddleName.Text = selectedRow.Cells(5).Value.ToString
-        txtLastName.Text = selectedRow.Cells(6).Value.ToString
-        txtIdNumber.Text = selectedRow.Cells(7).Value.ToString
-        txtEmail.Text = selectedRow.Cells(8).Value.ToString
-        txtMobile.Text = selectedRow.Cells(9).Value.ToString
+        txtPassword.Text = "abcdefghijklmnopqrst"
+        txtFirstName.Text = selectedRow.Cells(3).Value.ToString
+        txtMiddleName.Text = selectedRow.Cells(4).Value.ToString
+        txtLastName.Text = selectedRow.Cells(5).Value.ToString
+        txtIdNumber.Text = selectedRow.Cells(6).Value.ToString
+        txtEmail.Text = selectedRow.Cells(7).Value.ToString
+        txtMobile.Text = selectedRow.Cells(8).Value.ToString
+        cbxActive.Checked = selectedRow.Cells(9).Value.ToString
 
         ' Need to get values for the Client,Org,Unit
         Dim myUnit As String
@@ -110,5 +138,44 @@
         txtOrganisation.Text = selectedRow.Cells(11).Value.ToString
         txtUnitInOrg.Text = selectedRow.Cells(10).Value.ToString
 
+    End Sub
+
+    Private Sub cmdResetPW_Click(sender As Object, e As EventArgs) Handles cmdResetPW.Click
+        FrmPasswordReset.Show()
+    End Sub
+
+    Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+        ' Fail if no User is selected
+        If String.IsNullOrEmpty(txtUserId.Text) Then
+            Exit Sub
+        End If
+
+        ' Add Parameters - Order Matters !!!
+        Access.AddParam("@userid", txtUserId.Text)
+        Access.AddParam("@userlogin", txtUserLogin.Text)
+        Access.AddParam("@password", txtPassword.Text)
+        Access.AddParam("@firstname", txtFirstName.Text)
+        Access.AddParam("@middlename", txtMiddleName.Text)
+        Access.AddParam("@lastname", txtLastName.Text)
+        Access.AddParam("@email", txtEmail.Text)
+        Access.AddParam("@mobile", txtMobile.Text)
+        Access.AddParam("@active", cbxActive.Enabled)
+
+        ' Run the Command
+        mySql = "update tbl_users " &
+                "set user_login-@userlogin," &
+                "[password]-@password," &
+                "first_name-@firstname," &
+                "middle_name-@middlename," &
+                "last_name-@lastname," &
+                "email_addr-@email " &
+                "where user_id_@userid"
+        Access.ExecQuery(mySql)
+
+        ' Report and Abort
+        If noerrors = True Then
+
+
+        End If
     End Sub
 End Class

@@ -23,15 +23,18 @@ Partial Class FrmUserMaintenance
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.dgvData = New System.Windows.Forms.DataGridView()
-        Me.cbxUsers = New System.Windows.Forms.ComboBox()
         Me.txtFind = New System.Windows.Forms.TextBox()
         Me.cmdFind = New System.Windows.Forms.Button()
         Me.msUserAction = New System.Windows.Forms.MenuStrip()
         Me.NewUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CreateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DisplayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.grbLogin = New System.Windows.Forms.GroupBox()
-        Me.cmdResetPW = New System.Windows.Forms.Button()
         Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.cbxActive = New System.Windows.Forms.CheckBox()
+        Me.cmdResetPW = New System.Windows.Forms.Button()
         Me.txtUserLogin = New System.Windows.Forms.TextBox()
         Me.txtUserId = New System.Windows.Forms.TextBox()
         Me.lblPassword = New System.Windows.Forms.Label()
@@ -57,6 +60,10 @@ Partial Class FrmUserMaintenance
         Me.lblLastName = New System.Windows.Forms.Label()
         Me.lblMiddleName = New System.Windows.Forms.Label()
         Me.lblFirstName = New System.Windows.Forms.Label()
+        Me.cmdCreate = New System.Windows.Forms.Button()
+        Me.cmdChange = New System.Windows.Forms.Button()
+        Me.cmdDisplay = New System.Windows.Forms.Button()
+        Me.cmdSave = New System.Windows.Forms.Button()
         CType(Me.dgvData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.msUserAction.SuspendLayout()
         Me.grbLogin.SuspendLayout()
@@ -76,15 +83,6 @@ Partial Class FrmUserMaintenance
         Me.dgvData.ReadOnly = True
         Me.dgvData.Size = New System.Drawing.Size(553, 118)
         Me.dgvData.TabIndex = 0
-        '
-        'cbxUsers
-        '
-        Me.cbxUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbxUsers.FormattingEnabled = True
-        Me.cbxUsers.Location = New System.Drawing.Point(325, 26)
-        Me.cbxUsers.Name = "cbxUsers"
-        Me.cbxUsers.Size = New System.Drawing.Size(178, 21)
-        Me.cbxUsers.TabIndex = 1
         '
         'txtFind
         '
@@ -113,9 +111,28 @@ Partial Class FrmUserMaintenance
         '
         'NewUserToolStripMenuItem
         '
+        Me.NewUserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateToolStripMenuItem, Me.ChangeToolStripMenuItem, Me.DisplayToolStripMenuItem})
         Me.NewUserToolStripMenuItem.Name = "NewUserToolStripMenuItem"
-        Me.NewUserToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
-        Me.NewUserToolStripMenuItem.Text = "New User"
+        Me.NewUserToolStripMenuItem.Size = New System.Drawing.Size(42, 20)
+        Me.NewUserToolStripMenuItem.Text = "User"
+        '
+        'CreateToolStripMenuItem
+        '
+        Me.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem"
+        Me.CreateToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.CreateToolStripMenuItem.Text = "Create"
+        '
+        'ChangeToolStripMenuItem
+        '
+        Me.ChangeToolStripMenuItem.Name = "ChangeToolStripMenuItem"
+        Me.ChangeToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.ChangeToolStripMenuItem.Text = "Change"
+        '
+        'DisplayToolStripMenuItem
+        '
+        Me.DisplayToolStripMenuItem.Name = "DisplayToolStripMenuItem"
+        Me.DisplayToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.DisplayToolStripMenuItem.Text = "Display"
         '
         'lblSearch
         '
@@ -128,8 +145,9 @@ Partial Class FrmUserMaintenance
         '
         'grbLogin
         '
-        Me.grbLogin.Controls.Add(Me.cmdResetPW)
         Me.grbLogin.Controls.Add(Me.txtPassword)
+        Me.grbLogin.Controls.Add(Me.cbxActive)
+        Me.grbLogin.Controls.Add(Me.cmdResetPW)
         Me.grbLogin.Controls.Add(Me.txtUserLogin)
         Me.grbLogin.Controls.Add(Me.txtUserId)
         Me.grbLogin.Controls.Add(Me.lblPassword)
@@ -142,28 +160,38 @@ Partial Class FrmUserMaintenance
         Me.grbLogin.TabStop = False
         Me.grbLogin.Text = "Login Detail"
         '
-        'cmdResetPW
-        '
-        Me.cmdResetPW.Location = New System.Drawing.Point(244, 68)
-        Me.cmdResetPW.Name = "cmdResetPW"
-        Me.cmdResetPW.Size = New System.Drawing.Size(56, 23)
-        Me.cmdResetPW.TabIndex = 6
-        Me.cmdResetPW.Text = "Reset"
-        Me.cmdResetPW.UseVisualStyleBackColor = True
-        '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(85, 70)
+        Me.txtPassword.Location = New System.Drawing.Point(85, 69)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(153, 20)
-        Me.txtPassword.TabIndex = 5
+        Me.txtPassword.Size = New System.Drawing.Size(120, 20)
+        Me.txtPassword.TabIndex = 8
         Me.txtPassword.UseSystemPasswordChar = True
+        '
+        'cbxActive
+        '
+        Me.cbxActive.AutoSize = True
+        Me.cbxActive.Location = New System.Drawing.Point(219, 17)
+        Me.cbxActive.Name = "cbxActive"
+        Me.cbxActive.Size = New System.Drawing.Size(56, 17)
+        Me.cbxActive.TabIndex = 7
+        Me.cbxActive.Text = "Active"
+        Me.cbxActive.UseVisualStyleBackColor = True
+        '
+        'cmdResetPW
+        '
+        Me.cmdResetPW.Location = New System.Drawing.Point(219, 69)
+        Me.cmdResetPW.Name = "cmdResetPW"
+        Me.cmdResetPW.Size = New System.Drawing.Size(55, 23)
+        Me.cmdResetPW.TabIndex = 6
+        Me.cmdResetPW.Text = "Reset Password"
+        Me.cmdResetPW.UseVisualStyleBackColor = True
         '
         'txtUserLogin
         '
         Me.txtUserLogin.Location = New System.Drawing.Point(85, 44)
         Me.txtUserLogin.Name = "txtUserLogin"
-        Me.txtUserLogin.Size = New System.Drawing.Size(118, 20)
+        Me.txtUserLogin.Size = New System.Drawing.Size(120, 20)
         Me.txtUserLogin.TabIndex = 4
         '
         'txtUserId
@@ -380,18 +408,57 @@ Partial Class FrmUserMaintenance
         Me.lblFirstName.TabIndex = 8
         Me.lblFirstName.Text = "First Name"
         '
+        'cmdCreate
+        '
+        Me.cmdCreate.Location = New System.Drawing.Point(325, 292)
+        Me.cmdCreate.Name = "cmdCreate"
+        Me.cmdCreate.Size = New System.Drawing.Size(75, 23)
+        Me.cmdCreate.TabIndex = 9
+        Me.cmdCreate.Text = "Create"
+        Me.cmdCreate.UseVisualStyleBackColor = True
+        '
+        'cmdChange
+        '
+        Me.cmdChange.Location = New System.Drawing.Point(406, 292)
+        Me.cmdChange.Name = "cmdChange"
+        Me.cmdChange.Size = New System.Drawing.Size(75, 23)
+        Me.cmdChange.TabIndex = 10
+        Me.cmdChange.Text = "Change"
+        Me.cmdChange.UseVisualStyleBackColor = True
+        '
+        'cmdDisplay
+        '
+        Me.cmdDisplay.Location = New System.Drawing.Point(487, 292)
+        Me.cmdDisplay.Name = "cmdDisplay"
+        Me.cmdDisplay.Size = New System.Drawing.Size(75, 23)
+        Me.cmdDisplay.TabIndex = 11
+        Me.cmdDisplay.Text = "Display"
+        Me.cmdDisplay.UseVisualStyleBackColor = True
+        '
+        'cmdSave
+        '
+        Me.cmdSave.Location = New System.Drawing.Point(325, 318)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(75, 23)
+        Me.cmdSave.TabIndex = 12
+        Me.cmdSave.Text = "Save"
+        Me.cmdSave.UseVisualStyleBackColor = True
+        '
         'FrmUserMaintenance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(592, 481)
+        Me.Controls.Add(Me.cmdSave)
+        Me.Controls.Add(Me.cmdDisplay)
+        Me.Controls.Add(Me.cmdChange)
+        Me.Controls.Add(Me.cmdCreate)
         Me.Controls.Add(Me.grbUserDetail)
         Me.Controls.Add(Me.grbClient)
         Me.Controls.Add(Me.grbLogin)
         Me.Controls.Add(Me.lblSearch)
         Me.Controls.Add(Me.cmdFind)
         Me.Controls.Add(Me.txtFind)
-        Me.Controls.Add(Me.cbxUsers)
         Me.Controls.Add(Me.dgvData)
         Me.Controls.Add(Me.msUserAction)
         Me.MainMenuStrip = Me.msUserAction
@@ -412,7 +479,6 @@ Partial Class FrmUserMaintenance
     End Sub
 
     Friend WithEvents dgvData As DataGridView
-    Friend WithEvents cbxUsers As ComboBox
     Friend WithEvents txtFind As TextBox
     Friend WithEvents cmdFind As Button
     Friend WithEvents msUserAction As MenuStrip
@@ -420,7 +486,6 @@ Partial Class FrmUserMaintenance
     Friend WithEvents lblSearch As Label
     Friend WithEvents grbLogin As GroupBox
     Friend WithEvents cmdResetPW As Button
-    Friend WithEvents txtPassword As TextBox
     Friend WithEvents txtUserLogin As TextBox
     Friend WithEvents txtUserId As TextBox
     Friend WithEvents lblPassword As Label
@@ -446,4 +511,13 @@ Partial Class FrmUserMaintenance
     Friend WithEvents lblLastName As Label
     Friend WithEvents lblMiddleName As Label
     Friend WithEvents lblFirstName As Label
+    Friend WithEvents CreateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ChangeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DisplayToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents cbxActive As CheckBox
+    Friend WithEvents cmdCreate As Button
+    Friend WithEvents cmdChange As Button
+    Friend WithEvents cmdDisplay As Button
+    Friend WithEvents txtPassword As TextBox
+    Friend WithEvents cmdSave As Button
 End Class

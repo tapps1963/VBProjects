@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmPasswordReset.Designer.vb">
+      <DependentUpon>FrmPasswordReset.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPasswordReset.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MD5Maker.vb" />
     <Compile Include="DBControl.vb" />
     <Compile Include="FrmUserMaintenance.vb">
@@ -105,6 +111,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmPasswordReset.resx">
+      <DependentUpon>FrmPasswordReset.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUserMaintenance.resx">
       <DependentUpon>FrmUserMaintenance.vb</DependentUpon>
     </EmbeddedResource>
