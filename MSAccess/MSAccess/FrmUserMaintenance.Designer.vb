@@ -64,6 +64,7 @@ Partial Class FrmUserMaintenance
         Me.cmdChange = New System.Windows.Forms.Button()
         Me.cmdDisplay = New System.Windows.Forms.Button()
         Me.cmdSave = New System.Windows.Forms.Button()
+        Me.cmdUnitInOrg = New System.Windows.Forms.Button()
         CType(Me.dgvData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.msUserAction.SuspendLayout()
         Me.grbLogin.SuspendLayout()
@@ -230,6 +231,7 @@ Partial Class FrmUserMaintenance
         '
         'grbClient
         '
+        Me.grbClient.Controls.Add(Me.cmdUnitInOrg)
         Me.grbClient.Controls.Add(Me.txtUnitInOrg)
         Me.grbClient.Controls.Add(Me.txtOrganisation)
         Me.grbClient.Controls.Add(Me.txtClient)
@@ -444,6 +446,15 @@ Partial Class FrmUserMaintenance
         Me.cmdSave.Text = "Save"
         Me.cmdSave.UseVisualStyleBackColor = True
         '
+        'cmdUnitInOrg
+        '
+        Me.cmdUnitInOrg.Location = New System.Drawing.Point(207, 70)
+        Me.cmdUnitInOrg.Name = "cmdUnitInOrg"
+        Me.cmdUnitInOrg.Size = New System.Drawing.Size(27, 22)
+        Me.cmdUnitInOrg.TabIndex = 8
+        Me.cmdUnitInOrg.Text = "-"
+        Me.cmdUnitInOrg.UseVisualStyleBackColor = True
+        '
         'FrmUserMaintenance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -520,4 +531,5 @@ Partial Class FrmUserMaintenance
     Friend WithEvents cmdDisplay As Button
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents cmdSave As Button
+    Friend WithEvents cmdUnitInOrg As Button
 End Class

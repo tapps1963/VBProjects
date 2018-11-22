@@ -119,6 +119,7 @@
         selectedRow = dgvData.Rows(index)
 
         txtUserId.Text = selectedRow.Cells(0).Value.ToString
+        txtUnitInOrg.Tag = selectedRow.Cells(0).Value.ToString
         txtUserLogin.Text = selectedRow.Cells(2).Value.ToString
         txtPassword.Text = "abcdefghijklmnopqrst"
         txtFirstName.Text = selectedRow.Cells(3).Value.ToString
@@ -151,7 +152,9 @@
         End If
 
         ' Add Parameters - Order Matters !!!
+        ' EXTREMLY IMPORTANT
         Access.AddParam("@userlogin", txtUserLogin.Text)
+        Access.AddParam("@unit", txtUnitInOrg.Tag)
         Access.AddParam("@password", txtPassword.Text)
         Access.AddParam("@firstname", txtFirstName.Text)
         Access.AddParam("@middlename", txtMiddleName.Text)
@@ -162,11 +165,10 @@
         Access.AddParam("@active", cbxActive.Enabled)
         Access.AddParam("@userid", txtUserId.Text)
 
-        ' Open DB
-
         ' Run the Command
         mySql = "update tbl_users " &
             "set user_login=@userlogin," &
+            "client_unit=@unit," &
             "[password]=@password," &
             "first_name=@firstname," &
             "middle_name=@middlename," &
@@ -204,4 +206,35 @@
         End If
     End Function
 
+    Private Sub cmdCreate_Click(sender As Object, e As EventArgs) Handles cmdCreate.Click
+        ' Clear the User Form
+        ClearForm()
+
+
+
+    End Sub
+
+    Private Sub ClearForm()
+        ' This sub will clear the User Form ready for input
+
+        txtUserId.Text = "(new)"
+        txtUserLogin.Text = ""
+        txtPassword.Text = "abcdefghijklmnopqrst"
+        txtFirstName.Text = ""
+        txtMiddleName.Text = ""
+        txtLastName.Text = ""
+        txtIdNumber.Text = ""
+        txtEmail.Text = ""
+        txtMobile.Text = ""
+        cbxActive.Checked = True
+
+        txtClient.Text = ""
+        txtOrganisation.Text = ""
+        txtUnitInOrg.Text = ""
+
+    End Sub
+
+    Private Sub cmdUnitInOrg_Click(sender As Object, e As EventArgs) Handles cmdUnitInOrg.Click
+        GetOrgUnit.Show()
+    End Sub
 End Class

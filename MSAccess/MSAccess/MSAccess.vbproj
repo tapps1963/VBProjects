@@ -79,6 +79,12 @@
     <Compile Include="FrmPasswordReset.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GetOrgUnit.Designer.vb">
+      <DependentUpon>GetOrgUnit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GetOrgUnit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MD5Maker.vb" />
     <Compile Include="DBControl.vb" />
     <Compile Include="FrmUserMaintenance.vb">
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUserMaintenance.resx">
       <DependentUpon>FrmUserMaintenance.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetOrgUnit.resx">
+      <DependentUpon>GetOrgUnit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
