@@ -25,11 +25,6 @@ Partial Class FrmUserMaintenance
         Me.dgvData = New System.Windows.Forms.DataGridView()
         Me.txtFind = New System.Windows.Forms.TextBox()
         Me.cmdFind = New System.Windows.Forms.Button()
-        Me.msUserAction = New System.Windows.Forms.MenuStrip()
-        Me.NewUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CreateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ChangeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DisplayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.grbLogin = New System.Windows.Forms.GroupBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
@@ -41,6 +36,7 @@ Partial Class FrmUserMaintenance
         Me.lblUserLogin = New System.Windows.Forms.Label()
         Me.lblUserId = New System.Windows.Forms.Label()
         Me.grbClient = New System.Windows.Forms.GroupBox()
+        Me.cmdUnitInOrg = New System.Windows.Forms.Button()
         Me.txtUnitInOrg = New System.Windows.Forms.TextBox()
         Me.txtOrganisation = New System.Windows.Forms.TextBox()
         Me.txtClient = New System.Windows.Forms.TextBox()
@@ -62,11 +58,8 @@ Partial Class FrmUserMaintenance
         Me.lblFirstName = New System.Windows.Forms.Label()
         Me.cmdCreate = New System.Windows.Forms.Button()
         Me.cmdChange = New System.Windows.Forms.Button()
-        Me.cmdDisplay = New System.Windows.Forms.Button()
         Me.cmdSave = New System.Windows.Forms.Button()
-        Me.cmdUnitInOrg = New System.Windows.Forms.Button()
         CType(Me.dgvData, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.msUserAction.SuspendLayout()
         Me.grbLogin.SuspendLayout()
         Me.grbClient.SuspendLayout()
         Me.grbUserDetail.SuspendLayout()
@@ -79,66 +72,32 @@ Partial Class FrmUserMaintenance
         Me.dgvData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvData.Location = New System.Drawing.Point(12, 53)
+        Me.dgvData.Location = New System.Drawing.Point(6, 33)
         Me.dgvData.Name = "dgvData"
         Me.dgvData.ReadOnly = True
-        Me.dgvData.Size = New System.Drawing.Size(553, 118)
+        Me.dgvData.Size = New System.Drawing.Size(635, 118)
         Me.dgvData.TabIndex = 0
         '
         'txtFind
         '
-        Me.txtFind.Location = New System.Drawing.Point(60, 27)
+        Me.txtFind.Location = New System.Drawing.Point(54, 7)
         Me.txtFind.Name = "txtFind"
         Me.txtFind.Size = New System.Drawing.Size(178, 20)
         Me.txtFind.TabIndex = 2
         '
         'cmdFind
         '
-        Me.cmdFind.Location = New System.Drawing.Point(244, 27)
+        Me.cmdFind.Location = New System.Drawing.Point(238, 7)
         Me.cmdFind.Name = "cmdFind"
         Me.cmdFind.Size = New System.Drawing.Size(75, 20)
         Me.cmdFind.TabIndex = 3
         Me.cmdFind.Text = "Find"
         Me.cmdFind.UseVisualStyleBackColor = True
         '
-        'msUserAction
-        '
-        Me.msUserAction.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewUserToolStripMenuItem})
-        Me.msUserAction.Location = New System.Drawing.Point(0, 0)
-        Me.msUserAction.Name = "msUserAction"
-        Me.msUserAction.Size = New System.Drawing.Size(592, 24)
-        Me.msUserAction.TabIndex = 4
-        Me.msUserAction.Text = "MenuStrip1"
-        '
-        'NewUserToolStripMenuItem
-        '
-        Me.NewUserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateToolStripMenuItem, Me.ChangeToolStripMenuItem, Me.DisplayToolStripMenuItem})
-        Me.NewUserToolStripMenuItem.Name = "NewUserToolStripMenuItem"
-        Me.NewUserToolStripMenuItem.Size = New System.Drawing.Size(42, 20)
-        Me.NewUserToolStripMenuItem.Text = "User"
-        '
-        'CreateToolStripMenuItem
-        '
-        Me.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem"
-        Me.CreateToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
-        Me.CreateToolStripMenuItem.Text = "Create"
-        '
-        'ChangeToolStripMenuItem
-        '
-        Me.ChangeToolStripMenuItem.Name = "ChangeToolStripMenuItem"
-        Me.ChangeToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
-        Me.ChangeToolStripMenuItem.Text = "Change"
-        '
-        'DisplayToolStripMenuItem
-        '
-        Me.DisplayToolStripMenuItem.Name = "DisplayToolStripMenuItem"
-        Me.DisplayToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
-        Me.DisplayToolStripMenuItem.Text = "Display"
-        '
         'lblSearch
         '
         Me.lblSearch.AutoSize = True
-        Me.lblSearch.Location = New System.Drawing.Point(13, 30)
+        Me.lblSearch.Location = New System.Drawing.Point(7, 10)
         Me.lblSearch.Name = "lblSearch"
         Me.lblSearch.Size = New System.Drawing.Size(41, 13)
         Me.lblSearch.TabIndex = 5
@@ -154,7 +113,7 @@ Partial Class FrmUserMaintenance
         Me.grbLogin.Controls.Add(Me.lblPassword)
         Me.grbLogin.Controls.Add(Me.lblUserLogin)
         Me.grbLogin.Controls.Add(Me.lblUserId)
-        Me.grbLogin.Location = New System.Drawing.Point(13, 177)
+        Me.grbLogin.Location = New System.Drawing.Point(7, 157)
         Me.grbLogin.Name = "grbLogin"
         Me.grbLogin.Size = New System.Drawing.Size(306, 99)
         Me.grbLogin.TabIndex = 6
@@ -163,7 +122,7 @@ Partial Class FrmUserMaintenance
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(85, 69)
+        Me.txtPassword.Location = New System.Drawing.Point(85, 72)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(120, 20)
         Me.txtPassword.TabIndex = 8
@@ -172,7 +131,7 @@ Partial Class FrmUserMaintenance
         'cbxActive
         '
         Me.cbxActive.AutoSize = True
-        Me.cbxActive.Location = New System.Drawing.Point(219, 17)
+        Me.cbxActive.Location = New System.Drawing.Point(219, 24)
         Me.cbxActive.Name = "cbxActive"
         Me.cbxActive.Size = New System.Drawing.Size(56, 17)
         Me.cbxActive.TabIndex = 7
@@ -181,7 +140,7 @@ Partial Class FrmUserMaintenance
         '
         'cmdResetPW
         '
-        Me.cmdResetPW.Location = New System.Drawing.Point(219, 69)
+        Me.cmdResetPW.Location = New System.Drawing.Point(219, 71)
         Me.cmdResetPW.Name = "cmdResetPW"
         Me.cmdResetPW.Size = New System.Drawing.Size(55, 23)
         Me.cmdResetPW.TabIndex = 6
@@ -190,22 +149,23 @@ Partial Class FrmUserMaintenance
         '
         'txtUserLogin
         '
-        Me.txtUserLogin.Location = New System.Drawing.Point(85, 44)
+        Me.txtUserLogin.Location = New System.Drawing.Point(85, 47)
         Me.txtUserLogin.Name = "txtUserLogin"
         Me.txtUserLogin.Size = New System.Drawing.Size(120, 20)
         Me.txtUserLogin.TabIndex = 4
         '
         'txtUserId
         '
-        Me.txtUserId.Location = New System.Drawing.Point(85, 18)
+        Me.txtUserId.Location = New System.Drawing.Point(85, 22)
         Me.txtUserId.Name = "txtUserId"
-        Me.txtUserId.Size = New System.Drawing.Size(43, 20)
+        Me.txtUserId.ReadOnly = True
+        Me.txtUserId.Size = New System.Drawing.Size(38, 20)
         Me.txtUserId.TabIndex = 3
         '
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(6, 72)
+        Me.lblPassword.Location = New System.Drawing.Point(6, 76)
         Me.lblPassword.Name = "lblPassword"
         Me.lblPassword.Size = New System.Drawing.Size(53, 13)
         Me.lblPassword.TabIndex = 2
@@ -214,7 +174,7 @@ Partial Class FrmUserMaintenance
         'lblUserLogin
         '
         Me.lblUserLogin.AutoSize = True
-        Me.lblUserLogin.Location = New System.Drawing.Point(6, 47)
+        Me.lblUserLogin.Location = New System.Drawing.Point(6, 51)
         Me.lblUserLogin.Name = "lblUserLogin"
         Me.lblUserLogin.Size = New System.Drawing.Size(58, 13)
         Me.lblUserLogin.TabIndex = 1
@@ -223,7 +183,7 @@ Partial Class FrmUserMaintenance
         'lblUserId
         '
         Me.lblUserId.AutoSize = True
-        Me.lblUserId.Location = New System.Drawing.Point(6, 21)
+        Me.lblUserId.Location = New System.Drawing.Point(6, 26)
         Me.lblUserId.Name = "lblUserId"
         Me.lblUserId.Size = New System.Drawing.Size(41, 13)
         Me.lblUserId.TabIndex = 0
@@ -238,38 +198,50 @@ Partial Class FrmUserMaintenance
         Me.grbClient.Controls.Add(Me.lblUnitInOrg)
         Me.grbClient.Controls.Add(Me.lblOrganisation)
         Me.grbClient.Controls.Add(Me.lblClient)
-        Me.grbClient.Location = New System.Drawing.Point(325, 177)
+        Me.grbClient.Location = New System.Drawing.Point(319, 157)
         Me.grbClient.Name = "grbClient"
-        Me.grbClient.Size = New System.Drawing.Size(240, 99)
+        Me.grbClient.Size = New System.Drawing.Size(322, 99)
         Me.grbClient.TabIndex = 7
         Me.grbClient.TabStop = False
         Me.grbClient.Text = "Client Detail"
         '
+        'cmdUnitInOrg
+        '
+        Me.cmdUnitInOrg.Location = New System.Drawing.Point(280, 71)
+        Me.cmdUnitInOrg.Name = "cmdUnitInOrg"
+        Me.cmdUnitInOrg.Size = New System.Drawing.Size(27, 22)
+        Me.cmdUnitInOrg.TabIndex = 8
+        Me.cmdUnitInOrg.Text = "-"
+        Me.cmdUnitInOrg.UseVisualStyleBackColor = True
+        '
         'txtUnitInOrg
         '
-        Me.txtUnitInOrg.Location = New System.Drawing.Point(81, 71)
+        Me.txtUnitInOrg.Location = New System.Drawing.Point(81, 72)
         Me.txtUnitInOrg.Name = "txtUnitInOrg"
-        Me.txtUnitInOrg.Size = New System.Drawing.Size(120, 20)
+        Me.txtUnitInOrg.ReadOnly = True
+        Me.txtUnitInOrg.Size = New System.Drawing.Size(197, 20)
         Me.txtUnitInOrg.TabIndex = 7
         '
         'txtOrganisation
         '
-        Me.txtOrganisation.Location = New System.Drawing.Point(81, 45)
+        Me.txtOrganisation.Location = New System.Drawing.Point(81, 47)
         Me.txtOrganisation.Name = "txtOrganisation"
-        Me.txtOrganisation.Size = New System.Drawing.Size(120, 20)
+        Me.txtOrganisation.ReadOnly = True
+        Me.txtOrganisation.Size = New System.Drawing.Size(197, 20)
         Me.txtOrganisation.TabIndex = 6
         '
         'txtClient
         '
-        Me.txtClient.Location = New System.Drawing.Point(81, 19)
+        Me.txtClient.Location = New System.Drawing.Point(81, 22)
         Me.txtClient.Name = "txtClient"
-        Me.txtClient.Size = New System.Drawing.Size(120, 20)
+        Me.txtClient.ReadOnly = True
+        Me.txtClient.Size = New System.Drawing.Size(197, 20)
         Me.txtClient.TabIndex = 5
         '
         'lblUnitInOrg
         '
         Me.lblUnitInOrg.AutoSize = True
-        Me.lblUnitInOrg.Location = New System.Drawing.Point(6, 74)
+        Me.lblUnitInOrg.Location = New System.Drawing.Point(6, 76)
         Me.lblUnitInOrg.Name = "lblUnitInOrg"
         Me.lblUnitInOrg.Size = New System.Drawing.Size(57, 13)
         Me.lblUnitInOrg.TabIndex = 3
@@ -278,7 +250,7 @@ Partial Class FrmUserMaintenance
         'lblOrganisation
         '
         Me.lblOrganisation.AutoSize = True
-        Me.lblOrganisation.Location = New System.Drawing.Point(6, 48)
+        Me.lblOrganisation.Location = New System.Drawing.Point(6, 51)
         Me.lblOrganisation.Name = "lblOrganisation"
         Me.lblOrganisation.Size = New System.Drawing.Size(66, 13)
         Me.lblOrganisation.TabIndex = 2
@@ -287,7 +259,7 @@ Partial Class FrmUserMaintenance
         'lblClient
         '
         Me.lblClient.AutoSize = True
-        Me.lblClient.Location = New System.Drawing.Point(6, 22)
+        Me.lblClient.Location = New System.Drawing.Point(6, 26)
         Me.lblClient.Name = "lblClient"
         Me.lblClient.Size = New System.Drawing.Size(33, 13)
         Me.lblClient.TabIndex = 1
@@ -307,7 +279,7 @@ Partial Class FrmUserMaintenance
         Me.grbUserDetail.Controls.Add(Me.lblLastName)
         Me.grbUserDetail.Controls.Add(Me.lblMiddleName)
         Me.grbUserDetail.Controls.Add(Me.lblFirstName)
-        Me.grbUserDetail.Location = New System.Drawing.Point(13, 280)
+        Me.grbUserDetail.Location = New System.Drawing.Point(7, 260)
         Me.grbUserDetail.Name = "grbUserDetail"
         Me.grbUserDetail.Size = New System.Drawing.Size(306, 185)
         Me.grbUserDetail.TabIndex = 8
@@ -316,21 +288,21 @@ Partial Class FrmUserMaintenance
         '
         'txtMobile
         '
-        Me.txtMobile.Location = New System.Drawing.Point(85, 149)
+        Me.txtMobile.Location = New System.Drawing.Point(85, 153)
         Me.txtMobile.Name = "txtMobile"
         Me.txtMobile.Size = New System.Drawing.Size(120, 20)
         Me.txtMobile.TabIndex = 19
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(85, 123)
+        Me.txtEmail.Location = New System.Drawing.Point(85, 127)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(215, 20)
         Me.txtEmail.TabIndex = 18
         '
         'txtIdNumber
         '
-        Me.txtIdNumber.Location = New System.Drawing.Point(85, 97)
+        Me.txtIdNumber.Location = New System.Drawing.Point(85, 101)
         Me.txtIdNumber.Name = "txtIdNumber"
         Me.txtIdNumber.Size = New System.Drawing.Size(120, 20)
         Me.txtIdNumber.TabIndex = 17
@@ -338,7 +310,7 @@ Partial Class FrmUserMaintenance
         'lblMobile
         '
         Me.lblMobile.AutoSize = True
-        Me.lblMobile.Location = New System.Drawing.Point(6, 152)
+        Me.lblMobile.Location = New System.Drawing.Point(6, 156)
         Me.lblMobile.Name = "lblMobile"
         Me.lblMobile.Size = New System.Drawing.Size(78, 13)
         Me.lblMobile.TabIndex = 16
@@ -347,7 +319,7 @@ Partial Class FrmUserMaintenance
         'lblEmail
         '
         Me.lblEmail.AutoSize = True
-        Me.lblEmail.Location = New System.Drawing.Point(6, 126)
+        Me.lblEmail.Location = New System.Drawing.Point(6, 130)
         Me.lblEmail.Name = "lblEmail"
         Me.lblEmail.Size = New System.Drawing.Size(73, 13)
         Me.lblEmail.TabIndex = 15
@@ -356,7 +328,7 @@ Partial Class FrmUserMaintenance
         'lblIdNumber
         '
         Me.lblIdNumber.AutoSize = True
-        Me.lblIdNumber.Location = New System.Drawing.Point(6, 100)
+        Me.lblIdNumber.Location = New System.Drawing.Point(6, 104)
         Me.lblIdNumber.Name = "lblIdNumber"
         Me.lblIdNumber.Size = New System.Drawing.Size(79, 13)
         Me.lblIdNumber.TabIndex = 14
@@ -364,21 +336,21 @@ Partial Class FrmUserMaintenance
         '
         'txtLastName
         '
-        Me.txtLastName.Location = New System.Drawing.Point(85, 71)
+        Me.txtLastName.Location = New System.Drawing.Point(85, 75)
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.Size = New System.Drawing.Size(120, 20)
         Me.txtLastName.TabIndex = 13
         '
         'txtMiddleName
         '
-        Me.txtMiddleName.Location = New System.Drawing.Point(85, 45)
+        Me.txtMiddleName.Location = New System.Drawing.Point(85, 49)
         Me.txtMiddleName.Name = "txtMiddleName"
         Me.txtMiddleName.Size = New System.Drawing.Size(120, 20)
         Me.txtMiddleName.TabIndex = 12
         '
         'txtFirstName
         '
-        Me.txtFirstName.Location = New System.Drawing.Point(85, 19)
+        Me.txtFirstName.Location = New System.Drawing.Point(85, 23)
         Me.txtFirstName.Name = "txtFirstName"
         Me.txtFirstName.Size = New System.Drawing.Size(120, 20)
         Me.txtFirstName.TabIndex = 11
@@ -386,7 +358,7 @@ Partial Class FrmUserMaintenance
         'lblLastName
         '
         Me.lblLastName.AutoSize = True
-        Me.lblLastName.Location = New System.Drawing.Point(6, 74)
+        Me.lblLastName.Location = New System.Drawing.Point(6, 78)
         Me.lblLastName.Name = "lblLastName"
         Me.lblLastName.Size = New System.Drawing.Size(49, 13)
         Me.lblLastName.TabIndex = 10
@@ -395,7 +367,7 @@ Partial Class FrmUserMaintenance
         'lblMiddleName
         '
         Me.lblMiddleName.AutoSize = True
-        Me.lblMiddleName.Location = New System.Drawing.Point(6, 48)
+        Me.lblMiddleName.Location = New System.Drawing.Point(6, 52)
         Me.lblMiddleName.Name = "lblMiddleName"
         Me.lblMiddleName.Size = New System.Drawing.Size(69, 13)
         Me.lblMiddleName.TabIndex = 9
@@ -404,7 +376,7 @@ Partial Class FrmUserMaintenance
         'lblFirstName
         '
         Me.lblFirstName.AutoSize = True
-        Me.lblFirstName.Location = New System.Drawing.Point(6, 22)
+        Me.lblFirstName.Location = New System.Drawing.Point(6, 26)
         Me.lblFirstName.Name = "lblFirstName"
         Me.lblFirstName.Size = New System.Drawing.Size(57, 13)
         Me.lblFirstName.TabIndex = 8
@@ -412,7 +384,7 @@ Partial Class FrmUserMaintenance
         '
         'cmdCreate
         '
-        Me.cmdCreate.Location = New System.Drawing.Point(325, 292)
+        Me.cmdCreate.Location = New System.Drawing.Point(400, 272)
         Me.cmdCreate.Name = "cmdCreate"
         Me.cmdCreate.Size = New System.Drawing.Size(75, 23)
         Me.cmdCreate.TabIndex = 9
@@ -421,47 +393,28 @@ Partial Class FrmUserMaintenance
         '
         'cmdChange
         '
-        Me.cmdChange.Location = New System.Drawing.Point(406, 292)
+        Me.cmdChange.Location = New System.Drawing.Point(319, 272)
         Me.cmdChange.Name = "cmdChange"
         Me.cmdChange.Size = New System.Drawing.Size(75, 23)
         Me.cmdChange.TabIndex = 10
         Me.cmdChange.Text = "Change"
         Me.cmdChange.UseVisualStyleBackColor = True
         '
-        'cmdDisplay
-        '
-        Me.cmdDisplay.Location = New System.Drawing.Point(487, 292)
-        Me.cmdDisplay.Name = "cmdDisplay"
-        Me.cmdDisplay.Size = New System.Drawing.Size(75, 23)
-        Me.cmdDisplay.TabIndex = 11
-        Me.cmdDisplay.Text = "Display"
-        Me.cmdDisplay.UseVisualStyleBackColor = True
-        '
         'cmdSave
         '
-        Me.cmdSave.Location = New System.Drawing.Point(325, 318)
+        Me.cmdSave.Location = New System.Drawing.Point(481, 272)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.Size = New System.Drawing.Size(75, 23)
         Me.cmdSave.TabIndex = 12
         Me.cmdSave.Text = "Save"
         Me.cmdSave.UseVisualStyleBackColor = True
         '
-        'cmdUnitInOrg
-        '
-        Me.cmdUnitInOrg.Location = New System.Drawing.Point(207, 70)
-        Me.cmdUnitInOrg.Name = "cmdUnitInOrg"
-        Me.cmdUnitInOrg.Size = New System.Drawing.Size(27, 22)
-        Me.cmdUnitInOrg.TabIndex = 8
-        Me.cmdUnitInOrg.Text = "-"
-        Me.cmdUnitInOrg.UseVisualStyleBackColor = True
-        '
         'FrmUserMaintenance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(592, 481)
+        Me.ClientSize = New System.Drawing.Size(653, 510)
         Me.Controls.Add(Me.cmdSave)
-        Me.Controls.Add(Me.cmdDisplay)
         Me.Controls.Add(Me.cmdChange)
         Me.Controls.Add(Me.cmdCreate)
         Me.Controls.Add(Me.grbUserDetail)
@@ -471,13 +424,9 @@ Partial Class FrmUserMaintenance
         Me.Controls.Add(Me.cmdFind)
         Me.Controls.Add(Me.txtFind)
         Me.Controls.Add(Me.dgvData)
-        Me.Controls.Add(Me.msUserAction)
-        Me.MainMenuStrip = Me.msUserAction
         Me.Name = "FrmUserMaintenance"
         Me.Text = "User Maintenance"
         CType(Me.dgvData, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.msUserAction.ResumeLayout(False)
-        Me.msUserAction.PerformLayout()
         Me.grbLogin.ResumeLayout(False)
         Me.grbLogin.PerformLayout()
         Me.grbClient.ResumeLayout(False)
@@ -492,8 +441,6 @@ Partial Class FrmUserMaintenance
     Friend WithEvents dgvData As DataGridView
     Friend WithEvents txtFind As TextBox
     Friend WithEvents cmdFind As Button
-    Friend WithEvents msUserAction As MenuStrip
-    Friend WithEvents NewUserToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblSearch As Label
     Friend WithEvents grbLogin As GroupBox
     Friend WithEvents cmdResetPW As Button
@@ -522,13 +469,9 @@ Partial Class FrmUserMaintenance
     Friend WithEvents lblLastName As Label
     Friend WithEvents lblMiddleName As Label
     Friend WithEvents lblFirstName As Label
-    Friend WithEvents CreateToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ChangeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DisplayToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents cbxActive As CheckBox
     Friend WithEvents cmdCreate As Button
     Friend WithEvents cmdChange As Button
-    Friend WithEvents cmdDisplay As Button
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents cmdSave As Button
     Friend WithEvents cmdUnitInOrg As Button

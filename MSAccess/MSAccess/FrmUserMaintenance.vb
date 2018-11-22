@@ -1,7 +1,7 @@
 ﻿Public Class FrmUserMaintenance
     Private mySql As String
-
     Private Access As New DBControl
+
     Private Function NotEmpty(text As String) As Boolean
         Return Not String.IsNullOrEmpty(text)
     End Function
@@ -11,8 +11,33 @@
         grbLogin.Visible = False
         grbUserDetail.Visible = False
 
+        cmdCreate.Visible = False
+        cmdCreate.Text = "Create"
+
+        cmdChange.Visible = False
+        cmdChange.Text = "Change"
+
+        cmdSave.Visible = False
+        cmdSave.Text = "Save"
+
+        SetFields(True)
+
+        cmdSave.Tag = ""
+
         RefreshGrid()
     End Sub
+
+    Private Function SetFields(OnOff As Boolean) As Boolean
+        txtUserLogin.ReadOnly = OnOff
+        txtPassword.ReadOnly = OnOff
+        txtFirstName.ReadOnly = OnOff
+        txtMiddleName.ReadOnly = OnOff
+        txtLastName.ReadOnly = OnOff
+        txtIdNumber.ReadOnly = OnOff
+        txtEmail.ReadOnly = OnOff
+        txtMobile.ReadOnly = OnOff
+        cbxActive.Enabled = Not OnOff
+    End Function
 
     Public Sub RefreshGrid()
         '& "tbl_users.password, " _
@@ -113,6 +138,9 @@
         grbLogin.Visible = True
         grbUserDetail.Visible = True
 
+        cmdChange.Visible = True
+        cmdCreate.Visible = True
+
         Dim index As Integer
         index = e.RowIndex
         Dim selectedRow As DataGridViewRow
@@ -146,10 +174,19 @@
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+        ChangeUser()
+    End Sub
+
+    Private Sub CreateUser()
+
+    End Sub
+
+    Private Sub ChangeUser()
         ' Fail if no User is selected
         If String.IsNullOrEmpty(txtUserId.Text) Then
             Exit Sub
         End If
+        ' TODO The passowrd does need update from the read Password...
 
         ' Add Parameters - Order Matters !!!
         ' EXTREMLY IMPORTANT
@@ -209,7 +246,12 @@
     Private Sub cmdCreate_Click(sender As Object, e As EventArgs) Handles cmdCreate.Click
         ' Clear the User Form
         ClearForm()
+        SetFields(Not True)
 
+        cmdSave.Visible = True
+
+        cmdSave.Tag = "Create"
+        ' TODO insert Data into the db
 
 
     End Sub
@@ -218,6 +260,7 @@
         ' This sub will clear the User Form ready for input
 
         txtUserId.Text = "(new)"
+        txtUnitInOrg.Tag = ""
         txtUserLogin.Text = ""
         txtPassword.Text = "abcdefghijklmnopqrst"
         txtFirstName.Text = ""
@@ -235,6 +278,24 @@
     End Sub
 
     Private Sub cmdUnitInOrg_Click(sender As Object, e As EventArgs) Handles cmdUnitInOrg.Click
-        GetOrgUnit.Show()
+        FrmGetOrgUnit.Show()
     End Sub
+
+    Private Sub cmdChange_Click(sender As Object, e As EventArgs) Handles cmdChange.Click
+        Select Case cmdChange.Text
+            Case "Change"
+                SetFields(Not True)
+                cmdChange.Text = "Display"
+                cmdSave.Visible = True
+
+            Case "Display"
+                SetFields(True)
+                cmdChange.Text = "Change"
+                cmdSave.Visible = False
+
+        End Select
+
+    End Sub
+
+
 End Class

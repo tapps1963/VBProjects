@@ -1,6 +1,6 @@
 ﻿Imports System.Windows.Forms
 
-Public Class GetOrgUnit
+Public Class FrmGetOrgUnit
     Private Access As New DBControl
     Private mySql As String
     Private myTest() As String
@@ -25,6 +25,7 @@ Public Class GetOrgUnit
 
         GetClient()
 
+        OK_Button.Enabled = False
     End Sub
 
     Private Sub GetClient()
@@ -64,11 +65,13 @@ Public Class GetOrgUnit
         End If
 
         ' Clear the Combo Box
-        cbxOrganisation.Text = ""
+        cbxOrganisation.ResetText()
+        'cbxOrganisation.Text = ""
         cbxOrganisation.Items.Clear()
 
         ' Clear the Combo Box
-        cbxUnitInOrg.Text = ""
+        cbxUnitInOrg.ResetText()
+        'cbxUnitInOrg.Text = ""
         cbxUnitInOrg.Items.Clear()
 
         ' Fill the Client Combo Box
@@ -91,7 +94,8 @@ Public Class GetOrgUnit
         End If
 
         ' Clear the Combo Box
-        cbxUnitInOrg.Text = ""
+        cbxUnitInOrg.ResetText()
+        'cbxUnitInOrg.Text = ""
         cbxUnitInOrg.Items.Clear()
 
         ' Fill the Client Combo Box
@@ -108,6 +112,8 @@ Public Class GetOrgUnit
 
         GetOrganisation()
 
+        OK_Button.Enabled = False
+
     End Sub
 
     Private Sub cbxOrganisation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxOrganisation.SelectedIndexChanged
@@ -118,6 +124,8 @@ Public Class GetOrgUnit
 
         GetUnitInOrg()
 
+        OK_Button.Enabled = False
+
     End Sub
 
     Private Sub cbxUnitInOrg_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxUnitInOrg.SelectedIndexChanged
@@ -125,6 +133,8 @@ Public Class GetOrgUnit
         myTest = Split(cbxUnitInOrg.Text, "|")
         FrmUserMaintenance.txtUnitInOrg.Text = myTest(0)
         unitId = Val(myTest(1))
+
+        OK_Button.Enabled = True
 
     End Sub
 End Class
