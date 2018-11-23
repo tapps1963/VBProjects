@@ -2,6 +2,9 @@
     Private mySql As String
     Private Access As New DBControl
 
+    Public MyOrgUnit As New FrmGetOrgUnit
+
+
     Private Function NotEmpty(text As String) As Boolean
         Return Not String.IsNullOrEmpty(text)
     End Function
@@ -39,7 +42,7 @@
         cbxActive.Enabled = Not OnOff
     End Function
 
-    Public Sub RefreshGrid()
+    Private Sub RefreshGrid()
         '& "tbl_users.password, " _
         'mySql = "select * from tbl_users order by first_name"
 
@@ -147,7 +150,7 @@
         selectedRow = dgvData.Rows(index)
 
         txtUserId.Text = selectedRow.Cells(0).Value.ToString
-        txtUnitInOrg.Tag = selectedRow.Cells(0).Value.ToString
+        txtUnitInOrg.Tag = selectedRow.Cells(1).Value.ToString
         txtUserLogin.Text = selectedRow.Cells(2).Value.ToString
         txtPassword.Text = "abcdefghijklmnopqrst"
         txtFirstName.Text = selectedRow.Cells(3).Value.ToString
@@ -174,11 +177,73 @@
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
-        ChangeUser()
+
+        Select Case cmdSave.Tag
+            Case "Create"
+                CreateUser()
+                cmdSave.Tag = "Change"
+
+            Case "Change"
+                ChangeUser()
+                cmdSave.Tag = "Change"
+
+            Case Else
+
+
+        End Select
+
     End Sub
 
     Private Sub CreateUser()
+        ' Add Parameters - Order Matters !!!
+        ' EXTREMLY IMPORTANT
+        Access.AddParam("@userlogin", txtUserLogin.Text)
+        Access.AddParam("@unit", txtUnitInOrg.Tag)
+        Access.AddParam("@password", txtPassword.Text)
+        Access.AddParam("@firstname", txtFirstName.Text)
+        Access.AddParam("@middlename", txtMiddleName.Text)
+        Access.AddParam("@lastname", txtLastName.Text)
+        Access.AddParam("@idno", txtIdNumber.Text)
+        Access.AddParam("@email", txtEmail.Text)
+        Access.AddParam("@mobile", txtMobile.Text)
+        Access.AddParam("@active", cbxActive.Enabled)
 
+        ' Run the Command
+        mySql = "insert into tbl_users " &
+            "(user_login, " &
+            "client_unit, " &
+            "[password], " &
+            "first_name, " &
+            "middle_name, " &
+            "last_name, " &
+            "id_no, " &
+            "email_addr, " &
+            "mobile_no, " &
+            "active) " &
+            "values (@userlogin, " &
+            "@unit, " &
+            "@password, " &
+            "@firstname, " &
+            "@middlename, " &
+            "@lastname, " &
+            "@idno, " &
+            "@email, " &
+            "@mobile, " &
+            "@active); "
+
+        'mySql = "update tbl_users " &
+        '    "set first_name=@firstname " &
+        '    "where user_id=@userid"
+
+        Access.ExecQuery(mySql)
+
+        ' Report and Abort
+        If NoErrors(True) Then
+            Exit Sub
+        End If
+
+        ' Refresh User data Grd
+        RefreshGrid()
     End Sub
 
     Private Sub ChangeUser()
@@ -247,12 +312,10 @@
         ' Clear the User Form
         ClearForm()
         SetFields(Not True)
-
         cmdSave.Visible = True
 
         cmdSave.Tag = "Create"
         ' TODO insert Data into the db
-
 
     End Sub
 
@@ -278,7 +341,10 @@
     End Sub
 
     Private Sub cmdUnitInOrg_Click(sender As Object, e As EventArgs) Handles cmdUnitInOrg.Click
-        FrmGetOrgUnit.Show()
+
+        MyOrgUnit.Show()
+
+        'FrmGetOrgUnit.Show()
     End Sub
 
     Private Sub cmdChange_Click(sender As Object, e As EventArgs) Handles cmdChange.Click
@@ -287,15 +353,16 @@
                 SetFields(Not True)
                 cmdChange.Text = "Display"
                 cmdSave.Visible = True
+                cmdSave.Tag = "Change"
 
             Case "Display"
                 SetFields(True)
                 cmdChange.Text = "Change"
                 cmdSave.Visible = False
 
+
         End Select
 
     End Sub
-
 
 End Class

@@ -107,7 +107,9 @@ Public Class FrmGetOrgUnit
     Private Sub cbxClient_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxClient.SelectedIndexChanged
 
         myTest = Split(cbxClient.Text, "|")
+
         FrmUserMaintenance.txtClient.Text = myTest(0)
+
         clientId = Val(myTest(1))
 
         GetOrganisation()
