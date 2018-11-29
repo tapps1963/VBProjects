@@ -205,75 +205,20 @@
         ' Add Parameters - Order Matters !!!
         ' EXTREMLY IMPORTANT
 
-        ' Check the User Login
-        If txtUserLogin.Text <> "" Then
+        If ChkUserFields() = True Then
             Access.AddParam("@userlogin", txtUserLogin.Text)
-        Else
-            MsgBox("Enter the User Login", MsgBoxStyle.Exclamation, "User Detail Missing")
-            Exit Sub
-        End If
-
-        ' Check if an Org Unit have been selected
-        If txtUnitInOrg.Tag.ToString <> "" Then
             Access.AddParam("@unit", txtUnitInOrg.Tag)
-        Else
-            MsgBox("Enter the Org Unit", MsgBoxStyle.Exclamation, "User Detail Missing")
-            Exit Sub
-        End If
-
-        ' Check if the Password have been set
-        If txtPassword.Text <> "" Then
             Access.AddParam("@password", txtPassword.Text)
-        Else
-            MsgBox("Password not set", MsgBoxStyle.Exclamation, "User Detail Missing")
-            Exit Sub
-        End If
-
-        ' Check First Name have been entered
-        If txtFirstName.Text <> "" Then
             Access.AddParam("@firstname", txtFirstName.Text)
-        Else
-            MsgBox("Enter First Name", MsgBoxStyle.Exclamation, "User Detail Missing")
-            Exit Sub
-        End If
-
-        ' Middle name is optional
-        Access.AddParam("@middlename", txtMiddleName.Text)
-
-        ' Check Last Name have been entered
-        If txtLastName.Text <> "" Then
+            Access.AddParam("@middlename", txtMiddleName.Text)
             Access.AddParam("@lastname", txtLastName.Text)
-        Else
-            MsgBox("Enter Last Name", MsgBoxStyle.Exclamation, "User Detail Missing")
-            Exit Sub
-        End If
-
-        ' Check Id Number have been entered
-        If txtIdNumber.Text <> "" Then
             Access.AddParam("@idno", txtIdNumber.Text)
-        Else
-            MsgBox("Enter Id Number", MsgBoxStyle.Exclamation, "User Detail Missing")
-            Exit Sub
-        End If
-
-        ' Check email have been entered
-        If txtEmail.Text <> "" Then
             Access.AddParam("@email", txtEmail.Text)
-        Else
-            MsgBox("Enter eMail Address", MsgBoxStyle.Exclamation, "User Detail Missing")
-            Exit Sub
-        End If
-
-        ' Check if Mobile Number have been entered
-        If txtMobile.Text <> "" Then
             Access.AddParam("@mobile", txtMobile.Text)
+            Access.AddParam("@active", cbxActive.Checked)
         Else
-            MsgBox("Enter Mobile Number", MsgBoxStyle.Exclamation, "User Detail Missing")
             Exit Sub
         End If
-
-        ' Active is True or False
-        Access.AddParam("@active", cbxActive.Checked)
 
         ' Run the Command
         mySql = "insert into tbl_users " &
@@ -368,6 +313,87 @@
 
     End Sub
 
+
+    Private Function ChkUserFields() As Boolean
+
+
+        ' Check the User Login
+        If txtUserLogin.Text <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Enter the User Login", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Check if an Org Unit have been selected
+        If txtUnitInOrg.Tag.ToString <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Enter the Org Unit", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Check if the Password have been set
+        If txtPassword.Text <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Password not set", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Check First Name have been entered
+        If txtFirstName.Text <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Enter First Name", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Check Last Name have been entered
+        If txtLastName.Text <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Enter Last Name", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Check Id Number have been entered
+        If txtIdNumber.Text <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Enter Id Number", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Check email have been entered
+        If txtEmail.Text <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Enter eMail Address", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Check if Mobile Number have been entered
+        If txtMobile.Text <> "" Then
+            ChkUserFields = True
+        Else
+            MsgBox("Enter Mobile Number", MsgBoxStyle.Exclamation, "User Detail Missing")
+            ChkUserFields = False
+            Exit Function
+        End If
+
+        ' Active is True or False
+        Access.AddParam("@active", cbxActive.Checked)
+
+    End Function
+
     Private Function NoErrors(Optional Report As Boolean = False) As Boolean
         If Not String.IsNullOrEmpty(Access.Exception) Then
             If Report = True Then
@@ -383,6 +409,7 @@
         ' Clear the User Form
         ClearForm()
         SetFields(Not True)
+        txtPassword.Text = ""
         cmdSave.Visible = True
         cmdUnitInOrg.Visible = True
         cmdResetPW.Visible = True
