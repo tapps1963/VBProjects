@@ -3,8 +3,10 @@
 
     Private Sub FrmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
+        Me.WindowState = FormWindowState.Maximized
+
         FrmUserMaintenance.MdiParent = Me
-        FrmUserMaintenance.WindowState = FormWindowState.Maximized
+        'FrmUserMaintenance.WindowState = FormWindowState.Maximized
         'FrmUsers.MdiParent = Me
         'FrmUsers.WindowState = FormWindowState.Maximized
 

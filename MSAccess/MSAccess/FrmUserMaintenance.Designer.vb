@@ -75,7 +75,7 @@ Partial Class FrmUserMaintenance
         Me.dgvData.Location = New System.Drawing.Point(6, 33)
         Me.dgvData.Name = "dgvData"
         Me.dgvData.ReadOnly = True
-        Me.dgvData.Size = New System.Drawing.Size(635, 118)
+        Me.dgvData.Size = New System.Drawing.Size(948, 198)
         Me.dgvData.TabIndex = 0
         '
         'txtFind
@@ -113,7 +113,7 @@ Partial Class FrmUserMaintenance
         Me.grbLogin.Controls.Add(Me.lblPassword)
         Me.grbLogin.Controls.Add(Me.lblUserLogin)
         Me.grbLogin.Controls.Add(Me.lblUserId)
-        Me.grbLogin.Location = New System.Drawing.Point(7, 157)
+        Me.grbLogin.Location = New System.Drawing.Point(7, 237)
         Me.grbLogin.Name = "grbLogin"
         Me.grbLogin.Size = New System.Drawing.Size(306, 99)
         Me.grbLogin.TabIndex = 6
@@ -198,7 +198,7 @@ Partial Class FrmUserMaintenance
         Me.grbClient.Controls.Add(Me.lblUnitInOrg)
         Me.grbClient.Controls.Add(Me.lblOrganisation)
         Me.grbClient.Controls.Add(Me.lblClient)
-        Me.grbClient.Location = New System.Drawing.Point(319, 157)
+        Me.grbClient.Location = New System.Drawing.Point(319, 237)
         Me.grbClient.Name = "grbClient"
         Me.grbClient.Size = New System.Drawing.Size(322, 99)
         Me.grbClient.TabIndex = 7
@@ -279,7 +279,7 @@ Partial Class FrmUserMaintenance
         Me.grbUserDetail.Controls.Add(Me.lblLastName)
         Me.grbUserDetail.Controls.Add(Me.lblMiddleName)
         Me.grbUserDetail.Controls.Add(Me.lblFirstName)
-        Me.grbUserDetail.Location = New System.Drawing.Point(7, 260)
+        Me.grbUserDetail.Location = New System.Drawing.Point(7, 340)
         Me.grbUserDetail.Name = "grbUserDetail"
         Me.grbUserDetail.Size = New System.Drawing.Size(306, 185)
         Me.grbUserDetail.TabIndex = 8
@@ -384,7 +384,7 @@ Partial Class FrmUserMaintenance
         '
         'cmdCreate
         '
-        Me.cmdCreate.Location = New System.Drawing.Point(400, 272)
+        Me.cmdCreate.Location = New System.Drawing.Point(400, 352)
         Me.cmdCreate.Name = "cmdCreate"
         Me.cmdCreate.Size = New System.Drawing.Size(75, 23)
         Me.cmdCreate.TabIndex = 9
@@ -393,7 +393,7 @@ Partial Class FrmUserMaintenance
         '
         'cmdChange
         '
-        Me.cmdChange.Location = New System.Drawing.Point(319, 272)
+        Me.cmdChange.Location = New System.Drawing.Point(319, 352)
         Me.cmdChange.Name = "cmdChange"
         Me.cmdChange.Size = New System.Drawing.Size(75, 23)
         Me.cmdChange.TabIndex = 10
@@ -402,7 +402,7 @@ Partial Class FrmUserMaintenance
         '
         'cmdSave
         '
-        Me.cmdSave.Location = New System.Drawing.Point(481, 272)
+        Me.cmdSave.Location = New System.Drawing.Point(481, 352)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.Size = New System.Drawing.Size(75, 23)
         Me.cmdSave.TabIndex = 12
@@ -413,7 +413,7 @@ Partial Class FrmUserMaintenance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(653, 510)
+        Me.ClientSize = New System.Drawing.Size(966, 615)
         Me.Controls.Add(Me.cmdSave)
         Me.Controls.Add(Me.cmdChange)
         Me.Controls.Add(Me.cmdCreate)

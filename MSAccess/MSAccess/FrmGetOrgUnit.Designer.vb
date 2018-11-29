@@ -119,7 +119,7 @@ Partial Class FrmGetOrgUnit
         Me.lblUnitInOrg.TabIndex = 6
         Me.lblUnitInOrg.Text = "Unit in Org"
         '
-        'GetOrgUnit
+        'FrmGetOrgUnit
         '
         Me.AcceptButton = Me.OK_Button
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -136,7 +136,7 @@ Partial Class FrmGetOrgUnit
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "GetOrgUnit"
+        Me.Name = "FrmGetOrgUnit"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "GetOrgUnit"

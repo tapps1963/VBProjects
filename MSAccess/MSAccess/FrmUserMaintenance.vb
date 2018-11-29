@@ -10,6 +10,9 @@
     End Function
 
     Private Sub FrmUserMaintenance_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+        Me.WindowState = FormWindowState.Maximized
+
         grbClient.Visible = False
         grbLogin.Visible = False
         grbUserDetail.Visible = False
@@ -20,14 +23,20 @@
         cmdChange.Visible = False
         cmdChange.Text = "Change"
 
-        cmdSave.Visible = False
-        cmdSave.Text = "Save"
+        cmdUnitInOrg.Visible = False
 
         SetFields(True)
 
+        RefreshGrid()
+
+        cmdSave.Visible = False
+        cmdSave.Text = "Save"
         cmdSave.Tag = ""
 
-        RefreshGrid()
+        cmdResetPW.Visible = False
+
+        txtPassword.Enabled = False
+
     End Sub
 
     Private Function SetFields(OnOff As Boolean) As Boolean
@@ -173,7 +182,8 @@
     End Sub
 
     Private Sub cmdResetPW_Click(sender As Object, e As EventArgs) Handles cmdResetPW.Click
-        FrmPasswordReset.Show()
+        cmdSave.Visible = True
+        FrmPasswordReset.ShowDialog()
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
@@ -181,7 +191,6 @@
         Select Case cmdSave.Tag
             Case "Create"
                 CreateUser()
-                cmdSave.Tag = "Change"
 
             Case "Change"
                 ChangeUser()
@@ -189,24 +198,82 @@
 
             Case Else
 
-
         End Select
-
     End Sub
 
     Private Sub CreateUser()
         ' Add Parameters - Order Matters !!!
         ' EXTREMLY IMPORTANT
-        Access.AddParam("@userlogin", txtUserLogin.Text)
-        Access.AddParam("@unit", txtUnitInOrg.Tag)
-        Access.AddParam("@password", txtPassword.Text)
-        Access.AddParam("@firstname", txtFirstName.Text)
+
+        ' Check the User Login
+        If txtUserLogin.Text <> "" Then
+            Access.AddParam("@userlogin", txtUserLogin.Text)
+        Else
+            MsgBox("Enter the User Login", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Check if an Org Unit have been selected
+        If txtUnitInOrg.Tag.ToString <> "" Then
+            Access.AddParam("@unit", txtUnitInOrg.Tag)
+        Else
+            MsgBox("Enter the Org Unit", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Check if the Password have been set
+        If txtPassword.Text <> "" Then
+            Access.AddParam("@password", txtPassword.Text)
+        Else
+            MsgBox("Password not set", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Check First Name have been entered
+        If txtFirstName.Text <> "" Then
+            Access.AddParam("@firstname", txtFirstName.Text)
+        Else
+            MsgBox("Enter First Name", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Middle name is optional
         Access.AddParam("@middlename", txtMiddleName.Text)
-        Access.AddParam("@lastname", txtLastName.Text)
-        Access.AddParam("@idno", txtIdNumber.Text)
-        Access.AddParam("@email", txtEmail.Text)
-        Access.AddParam("@mobile", txtMobile.Text)
-        Access.AddParam("@active", cbxActive.Enabled)
+
+        ' Check Last Name have been entered
+        If txtLastName.Text <> "" Then
+            Access.AddParam("@lastname", txtLastName.Text)
+        Else
+            MsgBox("Enter Last Name", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Check Id Number have been entered
+        If txtIdNumber.Text <> "" Then
+            Access.AddParam("@idno", txtIdNumber.Text)
+        Else
+            MsgBox("Enter Id Number", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Check email have been entered
+        If txtEmail.Text <> "" Then
+            Access.AddParam("@email", txtEmail.Text)
+        Else
+            MsgBox("Enter eMail Address", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Check if Mobile Number have been entered
+        If txtMobile.Text <> "" Then
+            Access.AddParam("@mobile", txtMobile.Text)
+        Else
+            MsgBox("Enter Mobile Number", MsgBoxStyle.Exclamation, "User Detail Missing")
+            Exit Sub
+        End If
+
+        ' Active is True or False
+        Access.AddParam("@active", cbxActive.Checked)
 
         ' Run the Command
         mySql = "insert into tbl_users " &
@@ -244,6 +311,8 @@
 
         ' Refresh User data Grd
         RefreshGrid()
+
+        cmdSave.Tag = "Change"
     End Sub
 
     Private Sub ChangeUser()
@@ -264,7 +333,7 @@
         Access.AddParam("@idno", txtIdNumber.Text)
         Access.AddParam("@email", txtEmail.Text)
         Access.AddParam("@mobile", txtMobile.Text)
-        Access.AddParam("@active", cbxActive.Enabled)
+        Access.AddParam("@active", cbxActive.Checked)
         Access.AddParam("@userid", txtUserId.Text)
 
         ' Run the Command
@@ -295,6 +364,8 @@
         ' Refresh User data Grd
         RefreshGrid()
 
+        cmdSave.Visible = False
+
     End Sub
 
     Private Function NoErrors(Optional Report As Boolean = False) As Boolean
@@ -313,6 +384,8 @@
         ClearForm()
         SetFields(Not True)
         cmdSave.Visible = True
+        cmdUnitInOrg.Visible = True
+        cmdResetPW.Visible = True
 
         cmdSave.Tag = "Create"
         ' TODO insert Data into the db
@@ -342,9 +415,11 @@
 
     Private Sub cmdUnitInOrg_Click(sender As Object, e As EventArgs) Handles cmdUnitInOrg.Click
 
-        MyOrgUnit.Show()
+        cmdSave.Visible = True
 
+        MyOrgUnit.ShowDialog()
         'FrmGetOrgUnit.Show()
+
     End Sub
 
     Private Sub cmdChange_Click(sender As Object, e As EventArgs) Handles cmdChange.Click
@@ -352,17 +427,57 @@
             Case "Change"
                 SetFields(Not True)
                 cmdChange.Text = "Display"
-                cmdSave.Visible = True
+                'cmdSave.Visible = True
                 cmdSave.Tag = "Change"
+                cmdUnitInOrg.Visible = True
+                cmdResetPW.Visible = True
 
             Case "Display"
                 SetFields(True)
                 cmdChange.Text = "Change"
                 cmdSave.Visible = False
-
+                cmdUnitInOrg.Visible = False
+                cmdResetPW.Visible = False
 
         End Select
 
     End Sub
 
+
+
+    'Private Sub cbxActive_MouseClick(sender As Object, e As MouseEventArgs) Handles cbxActive.MouseClick
+    '    cmdSave.Visible = True
+    'End Sub
+
+    Private Sub cbxActive_CheckedChanged(sender As Object, e As EventArgs) Handles cbxActive.CheckedChanged
+        cmdSave.Visible = True
+    End Sub
+
+    Private Sub txtUserLogin_TextChanged(sender As Object, e As EventArgs) Handles txtUserLogin.TextChanged
+        cmdSave.Visible = True
+    End Sub
+
+    Private Sub txtFirstName_TextChanged(sender As Object, e As EventArgs) Handles txtFirstName.TextChanged
+        cmdSave.Visible = True
+    End Sub
+
+    Private Sub txtMiddleName_TextChanged(sender As Object, e As EventArgs) Handles txtMiddleName.TextChanged
+        cmdSave.Visible = True
+    End Sub
+
+    Private Sub txtLastName_TextChanged(sender As Object, e As EventArgs) Handles txtLastName.TextChanged
+        cmdSave.Visible = True
+    End Sub
+
+    Private Sub txtIdNumber_TextChanged(sender As Object, e As EventArgs) Handles txtIdNumber.TextChanged
+        cmdSave.Visible = True
+    End Sub
+
+    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
+        cmdSave.Visible = True
+    End Sub
+
+    Private Sub txtMobile_TextChanged(sender As Object, e As EventArgs) Handles txtMobile.TextChanged
+        cmdSave.Visible = True
+    End Sub
 End Class
