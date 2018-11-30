@@ -72,8 +72,8 @@
         & "INNER JOIN (tbl_client_org " _
         & "INNER JOIN tbl_client_unit On tbl_client_org.org_id = tbl_client_unit.org_id) " _
         & "On tbl_client.client_id = tbl_client_org.client_id) " _
-        & "INNER JOIN tbl_users On tbl_client_unit.unit_id = tbl_users.client_unit; " _
-        '& "WHERE(((tbl_users.user_id) = 1));"
+        & "INNER JOIN tbl_users On tbl_client_unit.unit_id = tbl_users.client_unit " _
+        & "ORDER BY tbl_users.user_id;"
 
         ' Run Query
         Access.ExecQuery(mySql)
@@ -202,29 +202,27 @@
     End Sub
 
     Private Sub CreateUser()
+        ' Validate field content
+        If ChkUserFields() = False Then Exit Sub
+
         ' Add Parameters - Order Matters !!!
         ' EXTREMLY IMPORTANT
+        Access.AddParam("@userlogin", txtUserLogin.Text)
+        Access.AddParam("@unit", Val(txtUnitInOrg.Tag))
+        Access.AddParam("@password", txtPassword.Text)
+        Access.AddParam("@firstname", txtFirstName.Text)
+        Access.AddParam("@middlename", txtMiddleName.Text)
+        Access.AddParam("@lastname", txtLastName.Text)
+        Access.AddParam("@idno", txtIdNumber.Text)
+        Access.AddParam("@email", txtEmail.Text)
+        Access.AddParam("@mobile", txtMobile.Text)
+        Access.AddParam("@active", cbxActive.Checked)
 
-        If ChkUserFields() = True Then
-            Access.AddParam("@userlogin", txtUserLogin.Text)
-            Access.AddParam("@unit", txtUnitInOrg.Tag)
-            Access.AddParam("@password", txtPassword.Text)
-            Access.AddParam("@firstname", txtFirstName.Text)
-            Access.AddParam("@middlename", txtMiddleName.Text)
-            Access.AddParam("@lastname", txtLastName.Text)
-            Access.AddParam("@idno", txtIdNumber.Text)
-            Access.AddParam("@email", txtEmail.Text)
-            Access.AddParam("@mobile", txtMobile.Text)
-            Access.AddParam("@active", cbxActive.Checked)
-        Else
-            Exit Sub
-        End If
-
-        ' Run the Command
+        ' Build the SQL String
         mySql = "insert into tbl_users " &
             "(user_login, " &
             "client_unit, " &
-            "[password], " &
+            "[password]," &
             "first_name, " &
             "middle_name, " &
             "last_name, " &
@@ -243,10 +241,7 @@
             "@mobile, " &
             "@active); "
 
-        'mySql = "update tbl_users " &
-        '    "set first_name=@firstname " &
-        '    "where user_id=@userid"
-
+        ' Run the Command
         Access.ExecQuery(mySql)
 
         ' Report and Abort
@@ -258,6 +253,7 @@
         RefreshGrid()
 
         cmdSave.Tag = "Change"
+
     End Sub
 
     Private Sub ChangeUser()
@@ -390,7 +386,7 @@
         End If
 
         ' Active is True or False
-        Access.AddParam("@active", cbxActive.Checked)
+        'Access.AddParam("@active", cbxActive.Checked)
 
     End Function
 
