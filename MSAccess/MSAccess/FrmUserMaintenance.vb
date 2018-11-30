@@ -257,11 +257,8 @@
     End Sub
 
     Private Sub ChangeUser()
-        ' Fail if no User is selected
-        If String.IsNullOrEmpty(txtUserId.Text) Then
-            Exit Sub
-        End If
-        ' TODO The passowrd does need update from the read Password...
+        ' Validate field content
+        If ChkUserFields() = False Then Exit Sub
 
         ' Add Parameters - Order Matters !!!
         ' EXTREMLY IMPORTANT
