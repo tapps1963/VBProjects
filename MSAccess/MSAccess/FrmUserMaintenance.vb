@@ -4,7 +4,6 @@
 
     Public MyOrgUnit As New FrmGetOrgUnit
 
-
     Private Function NotEmpty(text As String) As Boolean
         Return Not String.IsNullOrEmpty(text)
     End Function
@@ -500,4 +499,6 @@
     Private Sub txtMobile_TextChanged(sender As Object, e As EventArgs) Handles txtMobile.TextChanged
         cmdSave.Visible = True
     End Sub
+
+
 End Class
