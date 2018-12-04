@@ -1,24 +1,15 @@
 ﻿Public Class FrmMain
     'Public FrmUsers As New FrmUserMaintenance
-
     Private Sub FrmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-
         Me.WindowState = FormWindowState.Maximized
-
         FrmUserMaintenance.MdiParent = Me
-        'FrmUserMaintenance.WindowState = FormWindowState.Maximized
-        'FrmUsers.MdiParent = Me
-        'FrmUsers.WindowState = FormWindowState.Maximized
-
     End Sub
 
     Private Sub UserMaintenanceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserMaintenanceToolStripMenuItem.Click
-
         FrmUserMaintenance.Show()
-
-        'FrmUsers.Show()
-
     End Sub
 
-
+    Private Sub FrmMain_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        End
+    End Sub
 End Class

@@ -25,12 +25,10 @@ Partial Class FrmMain
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserMaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsersToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
@@ -47,7 +45,7 @@ Partial Class FrmMain
         'UserMaintenanceToolStripMenuItem
         '
         Me.UserMaintenanceToolStripMenuItem.Name = "UserMaintenanceToolStripMenuItem"
-        Me.UserMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UserMaintenanceToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
         Me.UserMaintenanceToolStripMenuItem.Text = "User Maintenance"
         '
         'FrmMain
@@ -60,8 +58,6 @@ Partial Class FrmMain
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FrmMain"
         Me.Text = "Tapps"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

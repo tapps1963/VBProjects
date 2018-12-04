@@ -27,6 +27,7 @@ Partial Class FrmTapps
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.txtUserName = New System.Windows.Forms.TextBox()
         Me.cmdLogIn = New System.Windows.Forms.Button()
+        Me.cmdClose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblUserName
@@ -34,7 +35,7 @@ Partial Class FrmTapps
         Me.lblUserName.AutoSize = True
         Me.lblUserName.BackColor = System.Drawing.Color.Transparent
         Me.lblUserName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserName.Location = New System.Drawing.Point(522, 299)
+        Me.lblUserName.Location = New System.Drawing.Point(241, 157)
         Me.lblUserName.Name = "lblUserName"
         Me.lblUserName.Size = New System.Drawing.Size(54, 24)
         Me.lblUserName.TabIndex = 0
@@ -45,7 +46,7 @@ Partial Class FrmTapps
         Me.lblPassword.AutoSize = True
         Me.lblPassword.BackColor = System.Drawing.Color.Transparent
         Me.lblPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPassword.Location = New System.Drawing.Point(522, 334)
+        Me.lblPassword.Location = New System.Drawing.Point(241, 192)
         Me.lblPassword.Name = "lblPassword"
         Me.lblPassword.Size = New System.Drawing.Size(92, 24)
         Me.lblPassword.TabIndex = 1
@@ -54,7 +55,7 @@ Partial Class FrmTapps
         'txtPassword
         '
         Me.txtPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassword.Location = New System.Drawing.Point(620, 331)
+        Me.txtPassword.Location = New System.Drawing.Point(339, 189)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(154, 29)
         Me.txtPassword.TabIndex = 3
@@ -63,7 +64,7 @@ Partial Class FrmTapps
         'txtUserName
         '
         Me.txtUserName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUserName.Location = New System.Drawing.Point(620, 296)
+        Me.txtUserName.Location = New System.Drawing.Point(339, 154)
         Me.txtUserName.Name = "txtUserName"
         Me.txtUserName.Size = New System.Drawing.Size(154, 29)
         Me.txtUserName.TabIndex = 4
@@ -73,28 +74,49 @@ Partial Class FrmTapps
         Me.cmdLogIn.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.cmdLogIn.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.cmdLogIn.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmdLogIn.Location = New System.Drawing.Point(620, 366)
+        Me.cmdLogIn.Location = New System.Drawing.Point(339, 224)
         Me.cmdLogIn.Name = "cmdLogIn"
         Me.cmdLogIn.Size = New System.Drawing.Size(154, 29)
         Me.cmdLogIn.TabIndex = 5
         Me.cmdLogIn.Text = "Log In"
         Me.cmdLogIn.UseVisualStyleBackColor = False
         '
+        'cmdClose
+        '
+        Me.cmdClose.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdClose.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.cmdClose.Location = New System.Drawing.Point(339, 259)
+        Me.cmdClose.Name = "cmdClose"
+        Me.cmdClose.Size = New System.Drawing.Size(154, 29)
+        Me.cmdClose.TabIndex = 6
+        Me.cmdClose.Text = "Close"
+        Me.cmdClose.UseVisualStyleBackColor = False
+        '
         'FrmTapps
         '
+        Me.AcceptButton = Me.cmdLogIn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.BackgroundImage = Global.MSAccess.My.Resources.Resources.IMG001
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.CancelButton = Me.cmdClose
+        Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.cmdClose)
         Me.Controls.Add(Me.cmdLogIn)
         Me.Controls.Add(Me.txtUserName)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.lblPassword)
         Me.Controls.Add(Me.lblUserName)
         Me.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FrmTapps"
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tapps DB"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -106,4 +128,5 @@ Partial Class FrmTapps
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents txtUserName As TextBox
     Friend WithEvents cmdLogIn As Button
+    Friend WithEvents cmdClose As Button
 End Class
