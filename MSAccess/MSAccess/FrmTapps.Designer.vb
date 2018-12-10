@@ -38,7 +38,7 @@ Partial Class FrmTapps
         Me.lblUserName.Location = New System.Drawing.Point(241, 157)
         Me.lblUserName.Name = "lblUserName"
         Me.lblUserName.Size = New System.Drawing.Size(54, 24)
-        Me.lblUserName.TabIndex = 0
+        Me.lblUserName.TabIndex = 1
         Me.lblUserName.Text = "User "
         '
         'lblPassword
@@ -58,7 +58,7 @@ Partial Class FrmTapps
         Me.txtPassword.Location = New System.Drawing.Point(339, 189)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(154, 29)
-        Me.txtPassword.TabIndex = 3
+        Me.txtPassword.TabIndex = 1
         Me.txtPassword.UseSystemPasswordChar = True
         '
         'txtUserName
@@ -67,7 +67,7 @@ Partial Class FrmTapps
         Me.txtUserName.Location = New System.Drawing.Point(339, 154)
         Me.txtUserName.Name = "txtUserName"
         Me.txtUserName.Size = New System.Drawing.Size(154, 29)
-        Me.txtUserName.TabIndex = 4
+        Me.txtUserName.TabIndex = 0
         '
         'cmdLogIn
         '
@@ -77,7 +77,7 @@ Partial Class FrmTapps
         Me.cmdLogIn.Location = New System.Drawing.Point(339, 224)
         Me.cmdLogIn.Name = "cmdLogIn"
         Me.cmdLogIn.Size = New System.Drawing.Size(154, 29)
-        Me.cmdLogIn.TabIndex = 5
+        Me.cmdLogIn.TabIndex = 2
         Me.cmdLogIn.Text = "Log In"
         Me.cmdLogIn.UseVisualStyleBackColor = False
         '
@@ -89,7 +89,7 @@ Partial Class FrmTapps
         Me.cmdClose.Location = New System.Drawing.Point(339, 259)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(154, 29)
-        Me.cmdClose.TabIndex = 6
+        Me.cmdClose.TabIndex = 3
         Me.cmdClose.Text = "Close"
         Me.cmdClose.UseVisualStyleBackColor = False
         '
