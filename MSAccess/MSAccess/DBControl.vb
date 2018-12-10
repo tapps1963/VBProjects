@@ -2,10 +2,10 @@
 
 Public Class DBControl
     ' Create a DB Connection
-    Private connDB As String = My.Settings.MyConn
+    Private connDB As String = My.Settings.myConn
 
-    Private DBCon As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=QBankDB.accdb")
-    'Private DBCon As New OleDbConnection(connDB)
+    'Private DBCon As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=QBankDB.accdb")
+    Private DBCon As New OleDbConnection(connDB)
 
     ' Create DB Command
     Private DBCmd As OleDbCommand

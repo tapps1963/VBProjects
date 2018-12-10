@@ -54,14 +54,16 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\VBProjects\MSAccess\MSAccess\QBa"& _ 
-            "nkDB.accdb")>  _
-        Public ReadOnly Property MyConn() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=QBankDB.accdb")>  _
+        Public Property myConn() As String
             Get
-                Return CType(Me("MyConn"),String)
+                Return CType(Me("myConn"),String)
             End Get
+            Set
+                Me("myConn") = value
+            End Set
         End Property
     End Class
 End Namespace
