@@ -19,10 +19,11 @@
         FrmMain_Closed(sender, e)
     End Sub
 
-
-
     Private Sub OpenToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem1.Click
         FrmQuestion.ShowDialog()
+    End Sub
 
+    Private Sub ConnectionStringToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionStringToolStripMenuItem.Click
+        FrmConnString.ShowDialog()
     End Sub
 End Class

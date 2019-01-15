@@ -88,10 +88,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmConnString.Designer.vb">
+      <DependentUpon>FrmConnString.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConnString.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmQuestion.Designer.vb">
       <DependentUpon>FrmQuestion.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmQuestion.vb" />
+    <Compile Include="FrmQuestion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmTapps.Designer.vb">
       <DependentUpon>FrmTapps.vb</DependentUpon>
     </Compile>
@@ -143,6 +151,9 @@
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmConnString.resx">
+      <DependentUpon>FrmConnString.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmQuestion.resx">
       <DependentUpon>FrmQuestion.vb</DependentUpon>
     </EmbeddedResource>
